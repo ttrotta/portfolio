@@ -1,5 +1,25 @@
 @import "tailwindcss";
 
+@theme {
+  --font-heading: var(--font-playfair-display);
+  --font-body: var(--font-inter);
+}
+
+@theme {
+  --color-primary: #0a0a0a;
+  --color-secondary: gray;
+  /* --color-accent:  */
+  --color-heading: white;
+}
+@layer components {
+  .card {
+    background-color: var(--color-primary);
+    /* border-radius: var(--radius-lg);
+    padding: --spacing(6);
+    box-shadow: var(--shadow-xl); */
+  }
+}
+
 /* Lenis configuration */
 
 html.lenis,

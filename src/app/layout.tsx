@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
 import "./globals.css";
+import { inter, playfairDisplay } from "../fonts";
+import type { Metadata } from "next";
 import SmoothScroll from "@/components/SmoothScroll";
 
 export const metadata: Metadata = {
@@ -14,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={"antialiased"}>
+    <html lang="en" className={`${inter.variable} ${playfairDisplay.variable}`}>
+      <body className={"font-body antialiased"}>
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
