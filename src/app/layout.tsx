@@ -1,5 +1,5 @@
 import "./globals.css";
-import { inter, playfairDisplay } from "../fonts";
+import { inter, playfairDisplay, vt323 } from "../fonts";
 import type { Metadata } from "next";
 import SmoothScroll from "@/components/SmoothScroll";
 
@@ -15,8 +15,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfairDisplay.variable}`}>
-      <body className={"font-body antialiased"}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${playfairDisplay.variable} ${vt323.variable}`}
+    >
+      <body className={"bg-background font-body text-texting antialiased"}>
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

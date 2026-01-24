@@ -3,14 +3,17 @@
 @theme {
   --font-heading: var(--font-playfair-display);
   --font-body: var(--font-inter);
+  --font-retro: var(--font-vt323);
 }
 
 @theme {
   --color-primary: #0a0a0a;
   --color-secondary: gray;
-  /* --color-accent:  */
+  --color-background: rgb(109, 106, 106);
   --color-heading: white;
+  --color-texting: white;
 }
+
 @layer components {
   .card {
     background-color: var(--color-primary);
@@ -18,6 +21,7 @@
     padding: --spacing(6);
     box-shadow: var(--shadow-xl); */
   }
+  /* Just use this like this: className="card" */
 }
 
 /* Lenis configuration */
