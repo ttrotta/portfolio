@@ -9,7 +9,7 @@
 @theme {
   --color-primary: #0a0a0a;
   --color-secondary: gray;
-  --color-background: rgb(109, 106, 106);
+  --color-background: rgb(0, 0, 0);
   --color-heading: white;
   --color-texting: white;
 }
