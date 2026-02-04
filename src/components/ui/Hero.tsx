@@ -36,13 +36,11 @@ export default function Hero() {
       ref={container}
       className="h-screen flex flex-col bg-black justify-center px-10 md:px-24 overflow-hidden"
     >
-      <main className="flex flex-col justify-center items-center font-heading">
-        <h1 className="hero-line text-[8vw] leading-[0.9] font-bold tracking-tighter uppercase">
-          Thiago Trotta
+      <main className="flex flex-col justify-center  font-heading">
+        <h1 className="hero-line text-8xl font-heading font-bold tracking-tighter">
+          THIAGO<span className="text-gray-500">TROTTA</span>
         </h1>
-        <p className="hero-line text-[2vw] mt-1.5 font-light text-neutral-400">
-          Software Engineering Student - Full Stack Developer
-        </p>
+        <p className="mt-4 text-xl text-gray-400">Software Engineer</p>
       </main>
     </section>
   );
