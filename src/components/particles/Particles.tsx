@@ -3,15 +3,24 @@ import { useFrame } from "@react-three/fiber";
 import { ShaderMaterial, AdditiveBlending } from "three";
 import { useParticleData } from "@/hooks/useParticleData";
 import { ParticleMaterialConfig } from "./material";
+import { Vector2 } from "three";
 
 export const Particles = () => {
-  const particleData = useParticleData(500, 75, 75, 200);
+  const particleData = useParticleData(1000, 100, 100, 250);
   const materialRef = useRef<ShaderMaterial>(null!);
+  const scaleValue = 55;
 
-  // uTime determined by Three.js object not React
   useFrame((state) => {
     if (materialRef.current) {
       materialRef.current.uniforms.uTime.value = state.clock.getElapsedTime();
+
+      const mouseX = state.pointer.x * scaleValue;
+      const mouseY = state.pointer.y * scaleValue;
+
+      materialRef.current.uniforms.uMouse.value.lerp(
+        new Vector2(mouseX, mouseY),
+        0.1,
+      );
     }
   });
 
