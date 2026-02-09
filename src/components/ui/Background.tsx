@@ -1,13 +1,13 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
-import { Environment, Lightformer } from "@react-three/drei";
-import Model3D from "@/components/Model3D";
+import { Environment } from "@react-three/drei";
+import Lightbulb from "../lights/Lightbulb";
 import { Particles } from "../particles/Particles";
 
 export default function ModelBackground() {
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none">
+    <div className="pointer-events-none fixed inset-0 z-0">
       <Canvas
         dpr={[1, 2]}
         gl={{
@@ -16,18 +16,11 @@ export default function ModelBackground() {
         }}
         camera={{ position: [0, 0, 8], fov: 50 }}
       >
-        <ambientLight intensity={0.3} />
+        <ambientLight intensity={0.1} />
         <directionalLight position={[5, 5, 5]} intensity={0.4} />
         <Environment preset="night" />
-        <Lightformer
-          form="rect"
-          intensity={0.5}
-          position={[-5, 5, 5]}
-          scale={[10, 10, 1]}
-          color="white"
-        />
         <Particles />
-        <Model3D />
+        <Lightbulb />
       </Canvas>
     </div>
   );
