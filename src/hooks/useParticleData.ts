@@ -23,7 +23,7 @@ export const useParticleData = (
       positions[i * 3 + 2] = (pseudoRandom(i + 0.3) - 0.5) * depth;
       noise[i] = pseudoRandom(i + 0.4) * 100;
       sizes[i] = pseudoRandom(i + 0.5) * 20.0;
-      speeds[i] = 0.1 + pseudoRandom(i + 0.6) * 0.4;
+      speeds[i] = 0.1 + pseudoRandom(i + 0.6) * 0.6;
     }
 
     return { positions, noise, sizes, speeds };

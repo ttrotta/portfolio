@@ -13,7 +13,6 @@ export function useScrollRotation(groupRef: RefObject<Group | null>) {
         start: "top top",
         end: "bottom bottom",
         scrub: 1,
-        markers: true,
       },
     });
 
