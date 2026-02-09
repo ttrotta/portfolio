@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+html {
+  font-size: 16px !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+}
+
 @theme {
   --font-heading: var(--font-playfair-display);
   --font-body: var(--font-inter);
@@ -22,6 +31,10 @@
     box-shadow: var(--shadow-xl); */
   }
   /* Just use this like this: className="card" */
+
+  .hero-logo {
+    @apply text-2xl text-white sm:text-3xl md:text-4xl lg:text-4xl;
+  }
 }
 
 /* Lenis configuration */
