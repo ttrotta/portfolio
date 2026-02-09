@@ -1,16 +1,16 @@
 export default function AboutMe() {
   return (
-    <section className="min-h-screen w-full py-20 border-b border-neutral-800 relative z-10">
+    <section className="relative z-10 min-h-screen w-full border-b border-neutral-800 py-20">
       <div className="container mx-auto px-4 md:px-10">
-        <h2 className="text-6xl font-heading font-bold mb-10 text-white">
+        <h2 className="font-heading mb-10 text-6xl font-bold text-white">
           Who am I?
         </h2>
-        <div className="max-w-3xl flex text-lg md:text-xl text-neutral-300 flex-col gap-6 leading-relaxed">
+        <div className="flex max-w-3xl flex-col gap-6 text-lg leading-relaxed text-neutral-300 md:text-xl">
           <p>
-            My name is Thiago Trotta. I got into programming and the IT world
-            when I was 16. That&apos;s why I&apos;m currently in my fifth year
-            studying Systems Engineering and working on personal projects in my
-            free time.
+            My name is Thiago Trotta and I&apos;m from Argentina. I got into
+            programming and the IT world when I was 16. That&apos;s why I&apos;m
+            currently in my fifth year studying Systems Engineering and working
+            on personal projects in my free time.
           </p>
           <p>
             I have a Full Stack profile, since one of the things I enjoy most is
