@@ -2,10 +2,10 @@
 
 import { LenisRef, ReactLenis } from "lenis/react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollTrigger, SplitText } from "gsap/all";
 import { useEffect, useRef, ReactNode } from "react";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export default function SmoothScroll({ children }: { children: ReactNode }) {
   const lenisRef = useRef<LenisRef>(null);
