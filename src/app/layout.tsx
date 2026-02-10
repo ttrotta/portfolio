@@ -2,6 +2,7 @@ import "./globals.css";
 import { inter, playfairDisplay, vt323 } from "../fonts";
 import type { Metadata } from "next";
 import SmoothScroll from "@/components/SmoothScroll";
+import { CustomScroll } from "@/components/CustomScroll";
 
 export const metadata: Metadata = {
   title: "Thiago Trotta",
@@ -20,6 +21,7 @@ export default function RootLayout({
       className={`${inter.variable} ${playfairDisplay.variable} ${vt323.variable}`}
     >
       <body className={"bg-background font-body text-texting antialiased"}>
+        <CustomScroll />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
