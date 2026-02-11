@@ -1,40 +1,87 @@
-import Link from "next/link";
+"use client";
+
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { SplitText } from "gsap/all";
 
 export default function Education() {
+  useGSAP(() => {
+    SplitText.create(".title", {
+      type: "chars",
+      mask: "chars",
+      onSplit(self) {
+        gsap.from(self.chars, {
+          scrollTrigger: {
+            trigger: ".title",
+            start: "top 80%",
+            end: "bottom 60%",
+            scrub: true,
+          },
+          y: 100,
+          autoAlpha: 0,
+          stagger: {
+            each: 0.05,
+            from: "end",
+          },
+          ease: "power4.out",
+        });
+      },
+    });
+  }, []);
+
   return (
-    <section className="w-full py-20 border-b border-neutral-800 relative z-10">
-      <div className="grid justify-items-end">
-        <div className="container px-4 md:px-10 text-right">
-          <h2 className="text-4xl md:text-6xl font-heading font-bold mb-12 text-white">
+    <section className="relative z-10 w-full py-24">
+      <div className="container mx-auto px-6 md:px-12">
+        <div className="flex justify-end">
+          <h2 className="title font-heading mb-10 inline-block border-b border-neutral-800 pb-8 pl-80 text-right text-5xl font-light tracking-tight text-white md:pl-120 md:text-7xl">
             Education
           </h2>
+        </div>
 
-          <div className="max-w-3xl space-y-8">
-            <article className="border-r-2 border-neutral-700 pr-6">
-              <h3 className="text-xl font-semibold text-white">
-                Software Engineering (5th Year)
+        <div className="flex flex-col items-end space-y-14">
+          <article className="group relative grid w-full max-w-4xl grid-cols-1 gap-4 text-right md:grid-cols-[1fr_150px] md:gap-10">
+            <div className="order-2 space-y-2 md:order-1">
+              <h3 className="font-body text-xl font-medium text-white transition-colors group-hover:text-neutral-300 md:text-2xl">
+                Information Systems Engineering
               </h3>
-              <time className="text-neutral-400 text-sm md:text-base">
-                2022 - Present
-              </time>
-              <p className="text-neutral-500 text-sm">
-                <Link href="https://www.uns.edu.ar/" target="_blank">
-                  Universidad Nacional del Sur
-                </Link>
-              </p>
-            </article>
+              <div className="flex items-center justify-end gap-2">
+                <p className="font-body text-sm font-light text-neutral-400">
+                  <a
+                    href="https://cs.uns.edu.ar/~devcs/carreras-de-grado/ing-en-sist-de-informacion"
+                    target="_blank"
+                    className="hover:underline"
+                  >
+                    Universidad Nacional del Sur - DCIC
+                  </a>
+                </p>
+                <span className="h-px w-4 bg-neutral-700"></span>
+              </div>
+            </div>
 
-            <article className="border-r-2 border-neutral-700 pr-6">
-              <h3 className="text-xl font-semibold text-white mb-3">
+            <time className="font-body order-1 pt-1.5 text-xs font-medium tracking-[0.25em] text-neutral-500 uppercase md:order-2">
+              2022 — PRES.
+            </time>
+          </article>
+
+          <article className="group relative grid w-full max-w-4xl grid-cols-1 gap-4 text-right md:grid-cols-[1fr_150px] md:gap-10">
+            <div className="order-2 space-y-3 md:order-1">
+              <h3 className="font-body text-xl font-medium text-white transition-colors group-hover:text-neutral-300 md:text-2xl">
                 Outside the Classroom
               </h3>
-              <p>
-                Learning doesn&apos;t stop at university. I dedicate time to
-                personal projects where I can experiment with new frameworks and
-                push my skills forward.
-              </p>
-            </article>
-          </div>
+              <div className="flex items-start justify-end gap-2">
+                <p className="font-body max-w-xl text-sm leading-relaxed font-light text-neutral-400">
+                  I dedicate my extra time to personal projects, experimenting
+                  with new frameworks and focusing on technical work within
+                  Linux environments.
+                </p>
+                <span className="mt-2.5 h-px w-4 shrink-0 bg-neutral-700"></span>
+              </div>
+            </div>
+
+            <time className="font-body order-1 pt-1.5 text-xs font-medium tracking-[0.25em] text-neutral-500 uppercase md:order-2">
+              ALWAYS
+            </time>
+          </article>
         </div>
       </div>
     </section>
