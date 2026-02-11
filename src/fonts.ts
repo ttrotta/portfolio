@@ -1,4 +1,4 @@
-import { Playfair_Display, Inter, VT323 } from "next/font/google";
+import { Playfair_Display, Inter, DM_Sans } from "next/font/google";
 
 export const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
@@ -13,9 +13,9 @@ export const inter = Inter({
   variable: "--font-inter",
 });
 
-export const vt323 = VT323({
-  weight: "400",
+export const dmSans = DM_Sans({
   subsets: ["latin"],
+  weight: ["400", "500", "700"],
   display: "swap",
-  variable: "--font-vt323",
+  variable: "--font-dm-sans",
 });
