@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+// import { FaStar } from "react-icons/fa6";
 
 export const CustomScroll = () => {
   const [progress, setProgress] = useState(0);
@@ -44,7 +45,9 @@ export const CustomScroll = () => {
         style={{
           transform: `translateY(${progress * (20 * 0.85)}vh)`,
         }}
-      />
+      >
+        {/* <FaStar className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white" /> */}
+      </div>
     </div>
   );
 };

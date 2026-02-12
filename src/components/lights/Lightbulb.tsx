@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { Group } from "three";
 import { useFloatingAnimation } from "@/hooks/useFloatingAnimation";
-import { useScrollRotation } from "@/hooks/useScrollAnimation";
+import { useScrollChoreography } from "@/hooks/useScrollChoreography";
 import { useLightAnimation } from "@/hooks/useLightAnimation";
 import { useResponsiveScale } from "@/hooks/useResponsiveScale";
 import LightWrapper from "./LightWrapper";
@@ -23,12 +23,12 @@ export default function Lightbulb() {
     );
 
   useFloatingAnimation(animatedGroupRef);
-  useScrollRotation(animatedGroupRef);
+  useScrollChoreography(animatedGroupRef);
 
   const { pointLightRef, sphereMeshRef, glowRef } = useLightAnimation(true);
 
   return (
-    <group ref={staticGroupRef} position={lbPosition}>
+    <group ref={staticGroupRef} position={lbPosition} rotation={[0, 0, -0.12]}>
       <group ref={animatedGroupRef}>
         <pointLight
           ref={pointLightRef}
@@ -46,7 +46,7 @@ export default function Lightbulb() {
           glowRef={glowRef}
         />
 
-        <primitive object={scene} scale={lbScale} rotation={[0, 0, 0]} />
+        <primitive object={scene} scale={lbScale} />
       </group>
     </group>
   );

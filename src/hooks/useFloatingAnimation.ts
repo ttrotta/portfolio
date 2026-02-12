@@ -4,7 +4,7 @@ import { Group } from "three";
 
 export function useFloatingAnimation(
   groupRef: RefObject<Group | null>,
-  options: { speed: number; amplitude: number } = { speed: 1, amplitude: 0.1 },
+  options: { speed: number; amplitude: number } = { speed: 1, amplitude: 0.2 },
 ) {
   useFrame((state) => {
     if (!groupRef.current) return;
