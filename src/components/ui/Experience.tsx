@@ -29,7 +29,7 @@ export default function Experience() {
   return (
     <section className="relative z-10 w-full py-24">
       <div className="container mx-auto px-6 md:px-12">
-        <h2 className="xpTitle font-heading relative mb-10 inline-block cursor-pointer overflow-hidden border-b border-neutral-800 pr-80 pb-8 text-5xl font-light tracking-tight md:pr-120 md:text-7xl">
+        <h2 className="xpTitle font-heading md: relative mb-10 inline-block cursor-pointer overflow-hidden border-b border-neutral-800 pr-10 pb-8 pl-10 text-5xl font-light tracking-tight md:pr-50 md:text-7xl xl:pr-120">
           Experience
         </h2>
 
@@ -44,7 +44,7 @@ export default function Experience() {
                 Teaching Assistant in Software Modeling
               </h3>
               <div className="flex items-center gap-2">
-                <span className="h-px w-4 bg-neutral-700"></span>
+                <span className="hidden bg-neutral-700 md:block md:h-px md:w-4"></span>
                 <p className="font-body text-sm font-light text-neutral-400">
                   Universidad Nacional del Sur
                 </p>
@@ -62,7 +62,7 @@ export default function Experience() {
                 Teaching Assistant in Formal Methods
               </h3>
               <div className="flex items-center gap-2">
-                <span className="h-px w-4 bg-neutral-700"></span>
+                <span className="hidden bg-neutral-700 md:block md:h-px md:w-4"></span>
                 <p className="font-body text-sm font-light text-neutral-400">
                   Universidad Nacional del Sur
                 </p>

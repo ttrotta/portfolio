@@ -18,34 +18,45 @@ export function useScrollChoreography(groupRef: RefObject<Group | null>) {
         start: "top top",
         end: "bottom bottom",
         scrub: 1,
-        markers: true,
       },
     });
 
     tl.set(groupRef.current.position, { y: 0, x: 0 });
 
     tl.to(groupRef.current.position, {
-      y: -0.055,
+      x: -viewport.width * 0.05,
+      y: viewport.height * 0.1,
+      z: viewport.height * 0.1,
       ease: "none",
-      duration: 0.05,
+      duration: 0.5,
     })
       .to(groupRef.current.position, {
-        x: -30,
+        x: -viewport.width * 0.4,
+        z: viewport.height * 0.5,
         ease: "none",
-        duration: 1,
+        duration: 0.45,
       })
-
-      .to(groupRef.current.rotation, {
-        z: 0.5,
-        y: Math.PI * 2,
-        ease: "none",
-
-        duration: 1,
+      .to(
+        groupRef.current.rotation,
+        {
+          x: -0.7,
+          y: 1.15,
+          z: 0.67,
+          ease: "none",
+          duration: 0.45,
+        },
+        "<",
+      )
+      .to(groupRef.current.scale, {
+        x: 0,
+        y: 0,
+        z: 0,
+        ease: "power2.in",
+        duration: 0.2,
       })
-      .to(groupRef.current.position, {
-        x: -30,
+      .to(groupRef.current.scale, {
         ease: "none",
-        duration: 1,
+        duration: 1.8,
       });
   }, [viewport]);
 }
