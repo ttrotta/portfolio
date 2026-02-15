@@ -1,18 +1,29 @@
-"use client";
-
 import ProjectPresenter from "../projects/ProjectPresenter";
+import { FaGithub } from "react-icons/fa";
 
 export default function Projects() {
   return (
-    <section className="relative z-10 h-[200vh] w-full">
+    <section className="relative z-10 min-h-screen w-full">
       <div className="flex w-full flex-col items-center justify-center overflow-hidden px-10">
-        <h2 className="font-heading py-8 text-8xl font-bold tracking-tight text-white">
-          Projects
-        </h2>
-
-        <div className="flex w-full flex-col gap-6">
-          <ProjectPresenter />
+        <div className="pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <h2 className="font-heading text-6xl font-bold tracking-widest text-white">
+            PROJECTS
+          </h2>
         </div>
+
+        <ProjectPresenter />
+
+        <a
+          href="https://github.com/ttrotta?tab=repositories"
+          target="_blanck"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 hover:opacity-20"
+        >
+          <span className="text-[13px]">
+            Visit my <strong>GitHub</strong> to see all my projects!
+          </span>
+          <FaGithub />
+        </a>
       </div>
     </section>
   );
