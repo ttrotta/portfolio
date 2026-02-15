@@ -1,20 +1,32 @@
+// Carousel.tsx
 import Card from "./Card";
+import { projects } from "./projectsData";
 
-export default function Carousel({ radius = 1.4, count = 6 }) {
-  return Array.from({ length: count }).map((_, index) => {
-    const angleStep = (index / count) * Math.PI * 2;
-    const x = Math.sin(angleStep) * radius;
-    const z = Math.cos(angleStep) * radius;
-    const y = 0;
-    const yRotation = Math.PI + angleStep;
+interface CarouselProps {
+  radius?: number;
+}
 
-    return (
-      <Card
-        key={index}
-        url={`/projects/project${(index % 10) + 1}_.png`}
-        position={[x, y, z]}
-        rotation={[0, yRotation, 0]}
-      />
-    );
-  });
+export default function Carousel({ radius = 1.2 }: CarouselProps) {
+  const count = projects.length;
+
+  return (
+    <>
+      {projects.map((projectData, index) => {
+        const angleStep = (index / count) * Math.PI * 2;
+        const x = Math.sin(angleStep) * radius;
+        const z = Math.cos(angleStep) * radius;
+        const yRotation = Math.PI + angleStep;
+
+        return (
+          <Card
+            key={projectData.id}
+            slug={projectData.slug}
+            url={projectData.image}
+            position={[x, 0, z]}
+            rotation={[0, yRotation, 0]}
+          />
+        );
+      })}
+    </>
+  );
 }
