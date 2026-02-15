@@ -21,16 +21,21 @@
 }
 
 @layer components {
-  .card {
-    background-color: var(--color-primary);
-    /* border-radius: var(--radius-lg);
-    padding: --spacing(6);
-    box-shadow: var(--shadow-xl); */
-  }
-  /* Just use this like this: className="card" */
-
   .hero-logo {
     @apply text-2xl text-white sm:text-3xl md:text-4xl lg:text-4xl;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar,
+  .no-scrollbar *::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar,
+  .no-scrollbar * {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 
