@@ -1,26 +1,22 @@
+// Card.tsx
 import { Image, ImageProps } from "@react-three/drei";
 import { BentPlane } from "./geometry/BentPlaneGeometry";
 import { DoubleSide } from "three";
-import { useFrame } from "@react-three/fiber";
+import { ThreeEvent, useFrame } from "@react-three/fiber";
 import { easing } from "maath";
 import type { Mesh } from "three";
-import type { ThreeEvent } from "@react-three/fiber";
 import { useState, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 type CardProps = ImageProps & {
   url: string;
+  slug: string;
 };
 
-export default function Card({ url, ...props }: CardProps) {
+export default function Card({ url, slug, ...props }: CardProps) {
   const ref = useRef<Mesh>(null);
   const [hovered, hover] = useState(false);
-
-  const pointerOver = (e: ThreeEvent<PointerEvent>) => {
-    e.stopPropagation();
-    hover(true);
-  };
-
-  const pointerOut = () => hover(false);
+  const router = useRouter();
 
   useFrame((_, delta) => {
     if (ref.current) {
@@ -50,20 +46,28 @@ export default function Card({ url, ...props }: CardProps) {
     }
   });
 
+  const handleClick = (e: ThreeEvent<MouseEvent>) => {
+    e.stopPropagation();
+    router.push(`/projects/${slug}`);
+  };
+
   return (
     <Image
-      // @ts-expect-error - Conflicto de tipos conocido entre R3F y Drei
+      // @ts-expect-error - Types conflict with Drei & Three.js
       ref={ref}
       url={url}
       transparent
       side={DoubleSide}
-      onPointerOver={pointerOver}
-      onPointerOut={pointerOut}
+      onPointerOver={(e: ThreeEvent<PointerEvent>) => {
+        e.stopPropagation();
+        hover(true);
+      }}
+      onPointerOut={() => hover(false)}
+      onClick={handleClick}
       alt="Project thumbnail"
       {...props}
     >
-      {/* <sphereGeometry args={[0.4, 32, 32]} /> */}
-      <BentPlane args={[0.1, 1, 1, 20, 20]} />
+      <BentPlane args={[0.17, 1, 0.9, 20, 20]} />
     </Image>
   );
 }
