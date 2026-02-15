@@ -5,7 +5,7 @@ import { Environment } from "@react-three/drei";
 import Lightbulb from "../lights/Lightbulb";
 import { Particles } from "../particles/Particles";
 
-export default function ModelBackground() {
+export default function Background() {
   return (
     <div className="pointer-events-none fixed inset-0 z-0">
       <Canvas
