@@ -21,7 +21,7 @@ export default function Carousel({ radius = 1.2 }: CarouselProps) {
           <Card
             key={projectData.id}
             slug={projectData.slug}
-            url={projectData.image}
+            url={projectData.images[0]}
             position={[x, 0, z]}
             rotation={[0, yRotation, 0]}
           />
