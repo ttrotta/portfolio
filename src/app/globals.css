@@ -70,7 +70,7 @@
   }
 
   .pag-nav {
-    @apply flex shrink-0 cursor-pointer items-center gap-2 border-0 bg-transparent p-0 text-[0.7rem] font-medium tracking-[0.16em] whitespace-nowrap text-gray-500 uppercase transition-colors duration-200 ease-in;
+    @apply flex shrink-0 cursor-pointer items-center gap-2 border-0 bg-transparent p-0 text-[0.9rem] font-medium tracking-[0.16em] whitespace-nowrap text-gray-500 uppercase transition-colors duration-200 ease-in lg:text-[0.7rem];
   }
 
   .pag-nav:hover {

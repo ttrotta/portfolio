@@ -25,7 +25,7 @@ export default function PaginationDots({ currentId }: PaginationDotsProps) {
             Prev
           </button>
 
-          <div className="mx-3.5 flex items-center justify-center gap-4">
+          <div className="mx-3.5 flex items-center justify-center gap-5 lg:gap-4">
             {projects.map((p) => {
               const isActive = p.id === currentId;
               return (
@@ -33,7 +33,7 @@ export default function PaginationDots({ currentId }: PaginationDotsProps) {
                   key={p.id}
                   onClick={() => router.push(`/projects/${p.slug}`)}
                   title={p.title}
-                  className={`pag-bar w-1 hover:scale-y-125 ${
+                  className={`pag-bar w-2 hover:scale-y-125 lg:w-1 ${
                     isActive ? "h-8 w-1.5 bg-gray-200" : "h-3.5 bg-gray-700"
                   }`}
                 />
@@ -51,7 +51,7 @@ export default function PaginationDots({ currentId }: PaginationDotsProps) {
         </div>
       </div>
       <div className="flex items-center justify-center">
-        <span className="text-[0.65rem] tracking-[.75em] text-[#758599]">
+        <span className="text-[.80rem] tracking-[.75em] text-[#758599] lg:text-[0.65rem]">
           {String(currentIndex + 1).padStart(2, "0")}/
           {String(projects.length).padStart(2, "0")}
         </span>

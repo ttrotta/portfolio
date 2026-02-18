@@ -13,6 +13,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 
 import TextColumn from "./TextColumn";
+import PaginationDots from "./PaginationDots";
 
 interface ProjectPageProps {
   project: Project;
@@ -43,6 +44,8 @@ export default function ProjectPage({ project }: ProjectPageProps) {
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 1024px)", () => {
+        ScrollTrigger.refresh();
+
         ScrollTrigger.create({
           trigger: containerRef.current,
           start: "top 10%",
@@ -101,9 +104,9 @@ export default function ProjectPage({ project }: ProjectPageProps) {
 
         <div
           ref={containerRef}
-          className="mx-auto flex w-full max-w-[85vw] flex-col items-start gap-12 pt-24 pb-16 lg:flex-row lg:gap-16 2xl:max-w-350"
+          className="mx-auto flex w-full max-w-[85vw] flex-col items-start justify-center gap-12 pt-30 pb-16 lg:flex-row lg:gap-16 2xl:max-w-350"
         >
-          <div className="flex w-full flex-col gap-12 lg:w-3/5">
+          <div className="order-2 flex w-full flex-col gap-12 lg:order-1 lg:w-3/5">
             {project.images.slice(1).map((imgSrc, index) => (
               <div
                 key={index}
@@ -120,11 +123,17 @@ export default function ProjectPage({ project }: ProjectPageProps) {
             ))}
           </div>
 
-          <TextColumn
-            project={project}
-            textColumnRef={textColumnRef}
-            titleRef={titleRef}
-          />
+          <div className="order-1 w-full lg:order-2 lg:w-2/5">
+            <TextColumn
+              project={project}
+              textColumnRef={textColumnRef}
+              titleRef={titleRef}
+            />
+          </div>
+
+          <div className="order-3 w-full lg:hidden">
+            <PaginationDots currentId={project.id} />
+          </div>
         </div>
       </div>
 
@@ -146,7 +155,7 @@ const BackButton = () => {
   return (
     <button
       onClick={() => router.push("/#projects")}
-      className="fixed top-35 left-4 z-50 cursor-pointer transition-colors hover:text-gray-400"
+      className="absolute top-31 left-2 z-50 cursor-pointer transition-colors hover:text-gray-400 sm:top-32 md:left-4 lg:fixed lg:top-35"
       aria-label="Back to projects"
     >
       <FiArrowDown className="h-8 w-8 rotate-90" />

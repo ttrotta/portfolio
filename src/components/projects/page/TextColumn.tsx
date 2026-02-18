@@ -18,25 +18,24 @@ export default function TextColumn({
   return (
     <div
       ref={textColumnRef}
-      className="flex w-full flex-col justify-center gap-6 lg:w-2/5"
+      className="flex w-full flex-col justify-center gap-6"
     >
       <div className="relative">
         <h2
           ref={titleRef}
-          className="text-5xl font-bold tracking-tight text-white perspective-[400px] lg:text-7xl"
-          // lg:-translate-x-25
+          className="ml-2 text-4xl font-bold tracking-tight text-white perspective-[400px] sm:ml-0 sm:text-5xl lg:text-7xl"
         >
           {project.title}
         </h2>
       </div>
-
-      <p className="max-w-lg text-sm leading-loose text-gray-400">
+      <p className="text-sm leading-loose text-gray-400 lg:max-w-lg">
         {project.description}
       </p>
-
       <TechStack stack={project.stack} />
       <ProjectLinks repoUrl={project.repoUrl} liveUrl={project.liveUrl} />
-      <PaginationDots currentId={project.id} />
+      <div className="hidden lg:block">
+        <PaginationDots currentId={project.id} />
+      </div>
     </div>
   );
 }

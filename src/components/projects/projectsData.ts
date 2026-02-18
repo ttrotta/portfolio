@@ -31,8 +31,15 @@ export const projects: Project[] = [
     id: 2,
     slug: "sky-reach",
     title: "Sky Reach",
-    description: "E-commerce de Drones creado en Next.js y Typescript.",
-    images: ["/projects/skyreach.avif", "/projects/sr1.png"],
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet porta enim," +
+      "et scelerisque mauris dignissim a. Aenean venenatis tincidunt elit non vulputate. Etiam at ipsum" +
+      " id lacus porttitor blandit. Duis malesuada leo accumsan metus commodo, eu posuere libero volutpat.",
+    images: [
+      "/projects/skyreach.avif",
+      "/projects/sr1.png",
+      "/projects/skyreach.avif",
+    ],
     stack: ["SQL", "Next.js", "Tailwind"],
     repoUrl: "https://github.com/ttrotta/sky-reach",
     liveUrl: "https://sky-reach.vercel.app/",
@@ -41,8 +48,15 @@ export const projects: Project[] = [
     id: 3,
     slug: "new-project",
     title: "New Project",
-    description: "Incognita",
-    images: ["/projects/newproject.avif", "/projects/np1.avif"],
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet porta enim," +
+      "et scelerisque mauris dignissim a. Aenean venenatis tincidunt elit non vulputate. Etiam at ipsum" +
+      " id lacus porttitor blandit. Duis malesuada leo accumsan metus commodo, eu posuere libero volutpat.",
+    images: [
+      "/projects/newproject.avif",
+      "/projects/np1.avif",
+      "/projects/np1.avif",
+    ],
     stack: ["React", "Node.js", "Tailwind"],
     repoUrl: "https://github.com/ttrotta/",
   },
@@ -67,8 +81,15 @@ export const projects: Project[] = [
     id: 5,
     slug: "sky-reach-2",
     title: "Sky Reach",
-    description: "E-commerce de Drones creado en Next.js y Typescript.",
-    images: ["/projects/skyreach.avif", "/projects/sr1.png"],
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet porta enim," +
+      "et scelerisque mauris dignissim a. Aenean venenatis tincidunt elit non vulputate. Etiam at ipsum" +
+      " id lacus porttitor blandit. Duis malesuada leo accumsan metus commodo, eu posuere libero volutpat.",
+    images: [
+      "/projects/skyreach.avif",
+      "/projects/sr1.png",
+      "/projects/skyreach.avif",
+    ],
     stack: ["SQL", "Next.js", "Tailwind"],
     repoUrl: "https://github.com/ttrotta/sky-reach",
     liveUrl: "https://sky-reach.vercel.app/",
@@ -77,8 +98,15 @@ export const projects: Project[] = [
     id: 6,
     slug: "new-project-2",
     title: "New Project",
-    description: "Incognita",
-    images: ["/projects/newproject.avif", "/projects/np1.avif"],
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet porta enim," +
+      "et scelerisque mauris dignissim a. Aenean venenatis tincidunt elit non vulputate. Etiam at ipsum" +
+      " id lacus porttitor blandit. Duis malesuada leo accumsan metus commodo, eu posuere libero volutpat.",
+    images: [
+      "/projects/newproject.avif",
+      "/projects/np1.avif",
+      "/projects/np1.avif",
+    ],
     stack: ["React", "Node.js", "Tailwind"],
     repoUrl: "https://github.com/ttrotta/",
   },
