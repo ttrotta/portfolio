@@ -65,7 +65,7 @@ export default function Hero() {
             aria-label="GitHub"
             className="pointer-events-auto text-white transition-all duration-300 hover:scale-110 hover:brightness-150"
           >
-            <FaGithub className="hero-logo text-3xl" aria-hidden="true" />
+            <FaGithub className="hero-logo h-7 w-7" aria-hidden="true" />
           </a>
 
           <a
@@ -75,7 +75,7 @@ export default function Hero() {
             aria-label="LinkedIn"
             className="pointer-events-auto text-white transition-all duration-300 hover:scale-110 hover:brightness-150"
           >
-            <FaLinkedin className="hero-logo" aria-hidden="true" />
+            <FaLinkedin className="hero-logo h-7 w-7" aria-hidden="true" />
           </a>
 
           <a
@@ -86,7 +86,7 @@ export default function Hero() {
             aria-label="Download CV"
             className="pointer-events-auto text-white transition-all duration-300 hover:scale-110 hover:brightness-150"
           >
-            <HiDownload className="hero-logo" aria-hidden="true" />
+            <HiDownload className="hero-logo h-7.5 w-7.5" aria-hidden="true" />
           </a>
         </div>
 
