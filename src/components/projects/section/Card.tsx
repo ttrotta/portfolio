@@ -1,6 +1,5 @@
-// Card.tsx
 import { Image, ImageProps } from "@react-three/drei";
-import { BentPlane } from "./geometry/BentPlaneGeometry";
+import { BentPlane } from "../geometry/BentPlaneGeometry";
 import { DoubleSide } from "three";
 import { ThreeEvent, useFrame } from "@react-three/fiber";
 import { easing } from "maath";

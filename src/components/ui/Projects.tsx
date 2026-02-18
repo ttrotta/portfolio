@@ -1,4 +1,4 @@
-import ProjectPresenter from "../projects/ProjectPresenter";
+import ProjectPresenter from "../projects/section/ProjectPresenter";
 import { FaGithub } from "react-icons/fa";
 
 export default function Projects() {
@@ -19,7 +19,7 @@ export default function Projects() {
           rel="noopener noreferrer"
           className="flex items-center gap-2 hover:opacity-20"
         >
-          <span className="text-[13px]">
+          <span className="text-[16px]">
             Visit my <strong>GitHub</strong> to see all my projects!
           </span>
           <FaGithub />
