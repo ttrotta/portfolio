@@ -24,6 +24,66 @@
   .hero-logo {
     @apply text-2xl text-white sm:text-3xl md:text-4xl lg:text-4xl;
   }
+
+  .tech-tag {
+    @apply relative inline-flex cursor-default items-center overflow-hidden border border-white/10 px-4 py-1.5 text-[0.7rem] font-medium tracking-[0.12em] text-gray-400 uppercase;
+  }
+
+  .tech-tag .blind-strip {
+    @apply absolute right-0 left-0 origin-bottom scale-y-0 bg-white/90 transition-transform duration-200 ease-in-out;
+  }
+
+  .tech-tag:hover .blind-strip {
+    @apply scale-y-100;
+  }
+
+  .tech-tag .label {
+    @apply relative z-1 transition-colors duration-200 ease-in-out;
+  }
+
+  .tech-tag:hover .label {
+    @apply text-neutral-900;
+  }
+
+  .proj-link {
+    @apply inline-flex items-center gap-1.5 text-[0.95rem] tracking-[0.01em] text-gray-400 no-underline transition-colors duration-200 ease-in-out;
+  }
+
+  .proj-link:hover {
+    @apply text-white;
+  }
+
+  .proj-link .arrow {
+    @apply inline-block h-5 w-5 text-base transition-transform duration-200 ease-in-out;
+  }
+
+  .proj-link:hover .arrow {
+    @apply translate-x-0.5 -translate-y-0.5;
+  }
+
+  .pag-bar {
+    @apply shrink-0 cursor-pointer rounded-[3px] border-0 p-0 transition-all duration-300 ease-in-out;
+  }
+
+  .pag-bar:hover {
+    @apply bg-gray-400;
+  }
+
+  .pag-nav {
+    @apply flex shrink-0 cursor-pointer items-center gap-2 border-0 bg-transparent p-0 text-[0.7rem] font-medium tracking-[0.16em] whitespace-nowrap text-gray-500 uppercase transition-colors duration-200 ease-in;
+  }
+
+  .pag-nav:hover {
+    @apply text-white;
+  }
+
+  .nav-line {
+    @apply inline-block h-px bg-gray-600 transition-all duration-300 ease-in-out;
+  }
+
+  .pag-nav:hover .nav-line {
+    @apply w-9 bg-white;
+  }
 }
 
 @layer utilities {
