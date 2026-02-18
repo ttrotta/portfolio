@@ -1,17 +1,23 @@
 import { Project, projects } from "../projectsData";
-import { useRouter } from "next/navigation";
+import { useTransition } from "@/contexts/TransitionProvider";
 
 interface PaginationDotsProps {
   currentId: Project["id"];
 }
 
 export default function PaginationDots({ currentId }: PaginationDotsProps) {
-  const router = useRouter();
+  const { navigateWithTransition } = useTransition();
+
   const currentIndex = projects.findIndex((p) => p.id === currentId);
+
   const prevProject =
     projects[currentIndex === 0 ? projects.length - 1 : currentIndex - 1];
   const nextProject =
     projects[currentIndex === projects.length - 1 ? 0 : currentIndex + 1];
+
+  const handleNavigation = (slug: string, direction: "next" | "prev") => {
+    navigateWithTransition(`/projects/${slug}`, direction);
+  };
 
   return (
     <div className="flex flex-col gap-2">
@@ -19,7 +25,7 @@ export default function PaginationDots({ currentId }: PaginationDotsProps) {
         <div className="flex gap-5">
           <button
             className="pag-nav"
-            onClick={() => router.push(`/projects/${prevProject.slug}`)}
+            onClick={() => handleNavigation(prevProject.slug, "prev")}
           >
             <span className="nav-line w-5" />
             Prev
@@ -28,10 +34,17 @@ export default function PaginationDots({ currentId }: PaginationDotsProps) {
           <div className="mx-3.5 flex items-center justify-center gap-5 lg:gap-4">
             {projects.map((p) => {
               const isActive = p.id === currentId;
+
+              let dir: "next" | "prev" = "next";
+              const targetIndex = projects.findIndex(
+                (proj) => proj.id === p.id,
+              );
+              if (targetIndex < currentIndex) dir = "prev";
+
               return (
                 <button
                   key={p.id}
-                  onClick={() => router.push(`/projects/${p.slug}`)}
+                  onClick={() => handleNavigation(p.slug, dir)}
                   title={p.title}
                   className={`pag-bar w-2 hover:scale-y-125 lg:w-1 ${
                     isActive ? "h-8 w-1.5 bg-gray-200" : "h-3.5 bg-gray-700"
@@ -43,7 +56,7 @@ export default function PaginationDots({ currentId }: PaginationDotsProps) {
 
           <button
             className="pag-nav"
-            onClick={() => router.push(`/projects/${nextProject.slug}`)}
+            onClick={() => handleNavigation(nextProject.slug, "next")}
           >
             Next
             <span className="nav-line w-5" />

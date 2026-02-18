@@ -1,4 +1,5 @@
 import ProjectBackground from "@/components/ui/ProjectBackground";
+import TransitionProvider from "@/contexts/TransitionProvider";
 
 export default function Project({
   children,
@@ -6,9 +7,11 @@ export default function Project({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="relative h-full w-full">
-      <ProjectBackground />
-      <div className="relative z-10">{children}</div>
-    </div>
+    <TransitionProvider>
+      <div className="relative h-full w-full">
+        <ProjectBackground />
+        <div className="relative z-10">{children}</div>
+      </div>
+    </TransitionProvider>
   );
 }
