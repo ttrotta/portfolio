@@ -1,4 +1,4 @@
-import { Project, projects } from "../projectsData";
+import { Project, projects } from "../../../data/projectsData";
 import { useTransition } from "@/contexts/TransitionProvider";
 
 interface PaginationDotsProps {

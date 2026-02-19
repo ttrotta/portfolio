@@ -1,4 +1,4 @@
-import { Project } from "../projectsData";
+import { Project } from "../../../data/projectsData";
 
 interface TechStackProps {
   stack: Project["stack"];

@@ -9,7 +9,7 @@ import AboutMe from "@/components/ui/AboutMe";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen w-full flex-col overflow-x-hidden">
+    <main className="flex min-h-screen w-full flex-col">
       <Background />
       <Hero />
       <Experience />

@@ -1,5 +1,5 @@
 import Card from "./Card";
-import { projects } from "../projectsData";
+import { projects } from "../../../data/projectsData";
 
 interface CarouselProps {
   radius?: number;

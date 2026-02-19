@@ -3,7 +3,6 @@
 import { createContext, useContext, useRef, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 
 type TransitionContextType = {
   navigateWithTransition: (url: string, direction: "next" | "prev") => void;

@@ -1,4 +1,4 @@
-import { Project } from "../projectsData";
+import { Project } from "../../../data/projectsData";
 import { FiArrowDown } from "react-icons/fi";
 
 interface ProjectLinksProps {

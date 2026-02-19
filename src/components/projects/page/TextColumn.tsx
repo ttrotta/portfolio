@@ -1,4 +1,4 @@
-import { Project } from "../projectsData";
+import { Project } from "../../../data/projectsData";
 
 import TechStack from "./TechStack";
 import ProjectLinks from "./ProjectLinks";

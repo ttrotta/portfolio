@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { projects } from "@/components/projects/projectsData";
+import { projects } from "@/data/projectsData";
 import ProjectPage from "@/components/projects/page/ProjectPage";
 
 export default async function ProjectsPage({
