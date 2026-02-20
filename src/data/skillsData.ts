@@ -1,36 +1,23 @@
-import { FiBox, FiCode, FiServer } from "react-icons/fi"; // Iconos de ejemplo
+export interface Skill {
+  name: string;
+  logo: string;
+  dark?: boolean;
+}
 
-export const skillCategories = [
+export const skills: Skill[] = [
+  { name: "React", logo: "/tech-stack-logos/react.svg" },
+  { name: "Next.js", logo: "/tech-stack-logos/nextjs.svg", dark: true },
+  { name: "TypeScript", logo: "/tech-stack-logos/typescript.svg" },
   {
-    id: "frontend",
-    title: "Frontend Development",
-    icon: FiCode,
-    skills: [
-      { name: "React", color: "#61DAFB" },
-      { name: "Next.js", color: "white" },
-      { name: "TypeScript", color: "#3178C6" },
-      { name: "Tailwind CSS", color: "#38B2AC" },
-      { name: "GSAP", color: "#88CE02" },
-    ],
+    name: "Tailwind CSS",
+    logo: "/tech-stack-logos/tailwindcss.svg",
   },
-  {
-    id: "backend",
-    title: "Backend & APIs",
-    icon: FiServer,
-    skills: [
-      { name: "Node.js", color: "#339933" },
-      { name: "Express", color: "white" },
-      { name: "PostgreSQL", color: "#336791" },
-    ],
-  },
-  {
-    id: "tools",
-    title: "Tools & Others",
-    icon: FiBox,
-    skills: [
-      { name: "Git", color: "#F05032" },
-      { name: "Figma", color: "#F24E1E" },
-      { name: "Docker", color: "#2496ED" },
-    ],
-  },
+  { name: "GSAP", logo: "/tech-stack-logos/gsap.svg", dark: true },
+  { name: "Three.js", logo: "/tech-stack-logos/threedotjs.svg", dark: true },
+  { name: "Node.js", logo: "/tech-stack-logos/nodejs.svg" },
+  { name: "Express", logo: "/tech-stack-logos/express.svg", dark: true },
+  { name: "PostgreSQL", logo: "/tech-stack-logos/postgresql.svg" },
+  { name: "Python", logo: "/tech-stack-logos/python.svg" },
+  { name: "Docker", logo: "/tech-stack-logos/docker.svg" },
+  { name: "Figma", logo: "/tech-stack-logos/figma.svg" },
 ];
