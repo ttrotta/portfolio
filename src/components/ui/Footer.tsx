@@ -4,7 +4,7 @@ import { HiMail } from "react-icons/hi";
 export default function Footer() {
   return (
     <footer className="relative z-20 w-full">
-      <div className="flex flex-col items-center justify-center px-6 pt-32 pb-16">
+      <div className="flex flex-col items-center justify-center px-6 pb-16">
         <p className="font-body mb-3 text-sm tracking-widest text-neutral-500 uppercase">
           Get in touch
         </p>
@@ -48,7 +48,7 @@ export default function Footer() {
 
       <div className="flex items-center justify-center px-6 py-8">
         <p className="font-body text-sm text-neutral-600">
-          &copy; {new Date().getFullYear()} Thiago Trotta. All rights reserved.
+          &copy; {new Date().getFullYear()} - Thiago Trotta.
         </p>
       </div>
     </footer>
