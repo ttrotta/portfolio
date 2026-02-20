@@ -27,6 +27,22 @@ export default function Education() {
         });
       },
     });
+
+    const articles = gsap.utils.toArray<HTMLElement>(".edu-article");
+    articles.forEach((article) => {
+      gsap.from(article.children, {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.12,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: article,
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+      });
+    });
   }, []);
 
   return (
@@ -39,7 +55,7 @@ export default function Education() {
         </div>
 
         <div className="flex flex-col items-end space-y-14">
-          <article className="group relative grid w-full max-w-4xl grid-cols-1 gap-4 text-right md:grid-cols-[1fr_150px] md:gap-10">
+          <article className="edu-article group relative grid w-full max-w-4xl grid-cols-1 gap-4 text-right md:grid-cols-[1fr_150px] md:gap-10">
             <div className="order-2 space-y-2 md:order-1">
               <h3 className="font-body text-xl font-medium text-white transition-colors group-hover:text-neutral-300 md:text-2xl">
                 Software Engineering
@@ -63,7 +79,7 @@ export default function Education() {
             </time>
           </article>
 
-          <article className="group relative grid w-full max-w-4xl grid-cols-1 gap-4 text-right md:grid-cols-[1fr_150px] md:gap-10">
+          <article className="edu-article group relative grid w-full max-w-4xl grid-cols-1 gap-4 text-right md:grid-cols-[1fr_150px] md:gap-10">
             <div className="order-2 space-y-3 md:order-1">
               <h3 className="font-body text-xl font-medium text-white transition-colors group-hover:text-neutral-300 md:text-2xl">
                 Outside the Classroom

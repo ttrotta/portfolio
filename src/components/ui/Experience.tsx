@@ -24,6 +24,22 @@ export default function Experience() {
         });
       },
     });
+
+    const articles = gsap.utils.toArray<HTMLElement>(".xp-article");
+    articles.forEach((article) => {
+      gsap.from(article.children, {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.12,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: article,
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+      });
+    });
   }, []);
 
   return (
@@ -34,7 +50,7 @@ export default function Experience() {
         </h2>
 
         <div className="max-w-4xl space-y-14">
-          <article className="group relative grid grid-cols-1 gap-4 md:grid-cols-[150px_1fr] md:gap-10">
+          <article className="xp-article group relative grid grid-cols-1 gap-4 md:grid-cols-[150px_1fr] md:gap-10">
             <time className="font-body pt-1.5 text-xs font-medium tracking-[0.25em] text-neutral-500 uppercase">
               2025
             </time>
@@ -52,7 +68,7 @@ export default function Experience() {
             </div>
           </article>
 
-          <article className="group relative grid grid-cols-1 gap-4 md:grid-cols-[150px_1fr] md:gap-10">
+          <article className="xp-article group relative grid grid-cols-1 gap-4 md:grid-cols-[150px_1fr] md:gap-10">
             <time className="font-body pt-1.5 text-xs font-medium tracking-[0.25em] text-neutral-500 uppercase">
               2025
             </time>
