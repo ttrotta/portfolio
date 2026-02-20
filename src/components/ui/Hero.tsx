@@ -48,16 +48,17 @@ export default function Hero() {
   });
 
   return (
-    <section className="pointer-events-none relative flex h-screen flex-col justify-center overflow-hidden px-10 md:px-24">
-      <div className="font-heading ml-10 flex flex-col justify-center">
-        <h1 className="fullname pointer-events-auto text-5xl font-bold tracking-tighter text-white sm:text-6xl md:text-7xl lg:text-8xl">
-          THIAGO<span className="text-gray-500">TROTTA</span>
+    <section className="pointer-events-none relative flex h-screen flex-col items-center justify-center overflow-hidden px-10 md:px-24">
+      <div className="flex flex-col items-center justify-center text-center">
+        <h1 className="font-heading fullname pointer-events-auto text-5xl font-bold text-white sm:text-6xl md:text-7xl lg:text-8xl">
+          THIAGO <br />
+          <span className="text-gray-600">TROTTA</span>
         </h1>
-        <p className="job-title pointer-events-auto mt-4 text-xl text-gray-400 sm:text-2xl md:text-3xl lg:text-4xl">
+        <p className="font-heading job-title pointer-events-auto mt-6 text-xl sm:text-2xl md:text-xl lg:text-2xl">
           Software Engineer
         </p>
 
-        <div className="mt-8 flex gap-10">
+        <div className="mt-10 flex gap-10">
           <a
             href="https://github.com/ttrotta"
             target="_blank"

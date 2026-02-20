@@ -42,7 +42,7 @@ export default function Education() {
           <article className="group relative grid w-full max-w-4xl grid-cols-1 gap-4 text-right md:grid-cols-[1fr_150px] md:gap-10">
             <div className="order-2 space-y-2 md:order-1">
               <h3 className="font-body text-xl font-medium text-white transition-colors group-hover:text-neutral-300 md:text-2xl">
-                Information Systems Engineering
+                Software Engineering
               </h3>
               <div className="flex items-center justify-end gap-2">
                 <p className="font-body text-sm font-light text-neutral-400">
@@ -70,9 +70,8 @@ export default function Education() {
               </h3>
               <div className="flex items-start justify-end gap-2">
                 <p className="font-body max-w-xl text-sm leading-relaxed font-light text-neutral-400">
-                  I dedicate my extra time to personal projects, experimenting
-                  with new frameworks and focusing on technical work within
-                  Linux environments.
+                  I dedicate my time to personal projects, constantly exploring
+                  new technologies and adapting to the rapid evolution of AI.
                 </p>
                 <span className="hidden bg-neutral-700 md:block md:h-px md:w-4"></span>
               </div>

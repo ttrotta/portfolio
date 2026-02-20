@@ -6,8 +6,8 @@ export default function Projects() {
     <section id="projects" className="relative z-10 min-h-screen w-full">
       <div className="flex w-full flex-col items-center justify-center overflow-hidden px-10">
         <div className="pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <h2 className="font-heading text-6xl font-bold tracking-widest text-white">
-            PROJECTS
+          <h2 className="font-heading text-5xl font-bold text-white md:text-7xl">
+            Projects
           </h2>
         </div>
 
