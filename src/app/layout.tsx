@@ -1,5 +1,12 @@
 import "./globals.css";
-import { inter, playfairDisplay, dmSans } from "../fonts";
+import {
+  inter,
+  playfairDisplay,
+  dmSans,
+  satisfy,
+  spaceGrotesk,
+  michroma,
+} from "../fonts";
 import type { Metadata } from "next";
 import SmoothScroll from "@/components/SmoothScroll";
 import { CustomScroll } from "@/components/CustomScroll";
@@ -18,7 +25,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfairDisplay.variable} ${dmSans.variable}`}
+      className={`${inter.variable} ${playfairDisplay.variable} ${dmSans.variable} ${satisfy.variable} ${spaceGrotesk.variable} ${michroma.variable}`}
     >
       <body className={"bg-background font-body text-texting antialiased"}>
         <CustomScroll />
