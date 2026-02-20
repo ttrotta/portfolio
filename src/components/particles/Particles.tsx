@@ -6,7 +6,7 @@ import { ParticleMaterialConfig } from "./material";
 import { Vector2 } from "three";
 
 export const Particles = () => {
-  const particleData = useParticleData(1000, 100, 100, 250);
+  const particleData = useParticleData(1500, 100, 100, 250);
   const materialRef = useRef<ShaderMaterial>(null!);
   const scaleValue = 55;
 
