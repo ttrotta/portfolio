@@ -6,6 +6,7 @@ import Skills from "@/components/ui/Skills";
 import Footer from "@/components/ui/Footer";
 import Background from "@/components/ui/Background";
 import AboutMe from "@/components/ui/AboutMe";
+import Logo from "@/components/ui/Logo";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Projects />
       <Skills />
       <AboutMe />
+      <Logo />
       <Footer />
     </main>
   );
