@@ -52,11 +52,11 @@ export function useScrollChoreography(groupRef: RefObject<Group | null>) {
         y: 0,
         z: 0,
         ease: "power2.in",
-        duration: 0.2,
+        duration: 0.7,
       })
       .to(groupRef.current.scale, {
         ease: "none",
-        duration: 1.8,
+        duration: 1.3,
       });
   }, [viewport]);
 }
