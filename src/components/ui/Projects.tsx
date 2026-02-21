@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLenis } from "lenis/react";
 import ProjectPresenter from "../projects/section/ProjectPresenter";
 import { FaGithub } from "react-icons/fa";
@@ -9,12 +9,12 @@ export default function Projects() {
   const sectionRef = useRef<HTMLElement>(null);
   const hasSnapped = useRef(false);
   const lenis = useLenis();
+  const [showHint, setShowHint] = useState(false);
 
   useEffect(() => {
     const section = sectionRef.current;
     if (!section || !lenis) return;
 
-    // Block snap if page loaded with a hash pointing to another section (cross-page nav)
     const hash = window.location.hash;
     if (hash && hash !== "#projects") {
       window.__navbarScrolling = true;
@@ -27,7 +27,6 @@ export default function Projects() {
     const enterObserver = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasSnapped.current) {
-          // Don't snap if the navbar is currently scrolling to another section
           if (window.__navbarScrolling) return;
 
           hasSnapped.current = true;
@@ -35,6 +34,11 @@ export default function Projects() {
             duration: 2,
             easing: (t) => 1 - Math.pow(1 - t, 4),
           });
+
+          setShowHint(true);
+          setTimeout(() => {
+            setShowHint(false);
+          }, 6000);
         }
       },
       { threshold: 0.08 },
@@ -72,6 +76,16 @@ export default function Projects() {
         </div>
 
         <ProjectPresenter />
+
+        <div
+          className={`pointer-events-none absolute top-[20%] right-[10%] hidden rotate-12 transition-opacity duration-1000 md:block ${
+            showHint ? "animate-pulse opacity-100" : "opacity-0"
+          }`}
+        >
+          <span className="font-michroma text-2xl tracking-widest text-white/70">
+            Scroll the carousel!
+          </span>
+        </div>
 
         <a
           href="https://github.com/ttrotta?tab=repositories"

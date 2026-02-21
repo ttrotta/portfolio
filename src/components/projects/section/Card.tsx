@@ -10,9 +10,15 @@ import { useRouter } from "next/navigation";
 type CardProps = ImageProps & {
   url: string;
   slug: string;
+  scaleModifier?: number;
 };
 
-export default function Card({ url, slug, ...props }: CardProps) {
+export default function Card({
+  url,
+  slug,
+  scaleModifier = 1,
+  ...props
+}: CardProps) {
   const ref = useRef<Mesh>(null);
   const [hovered, hover] = useState(false);
   const router = useRouter();
@@ -21,7 +27,11 @@ export default function Card({ url, slug, ...props }: CardProps) {
     if (ref.current) {
       easing.damp3(
         ref.current.scale,
-        [hovered ? -1.15 : -1, hovered ? 1.15 : 1, 1],
+        [
+          (hovered ? -1.15 : -1) * scaleModifier,
+          (hovered ? 1.15 : 1) * scaleModifier,
+          1,
+        ],
         0.1,
         delta,
       );

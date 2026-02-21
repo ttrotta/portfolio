@@ -10,7 +10,7 @@ import Carousel from "./Carousel";
 export default function ProjectPresenter() {
   return (
     <div
-      className="no-scrollbar h-[90vh] w-[120vh] cursor-pointer overscroll-none"
+      className="no-scrollbar h-[70vh] w-full max-w-[120vh] cursor-pointer overscroll-none md:h-[90vh]"
       data-lenis-prevent="true"
     >
       <Canvas camera={{ position: [0, 0, 100], fov: 14 }}>
