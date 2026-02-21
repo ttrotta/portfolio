@@ -52,6 +52,7 @@ export default function Skills() {
 
   return (
     <section
+      id="skills"
       ref={sectionRef}
       className="relative z-10 mt-20 w-full overflow-hidden py-48 md:py-64"
     >

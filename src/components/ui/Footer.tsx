@@ -3,7 +3,7 @@ import { HiMail } from "react-icons/hi";
 
 export default function Footer() {
   return (
-    <footer className="relative z-20 w-full">
+    <footer id="footer" className="relative z-20 w-full">
       <div className="flex flex-col items-center justify-center px-6 pb-16">
         <p className="font-body mb-3 text-sm tracking-widest text-neutral-500 uppercase">
           Get in touch

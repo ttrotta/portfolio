@@ -46,7 +46,7 @@ export default function Education() {
   }, []);
 
   return (
-    <section className="relative z-10 my-70 w-full pr-12">
+    <section id="education" className="relative z-10 my-70 w-full pr-12">
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex justify-end">
           <h2 className="title font-heading mb-10 inline-block border-b border-neutral-800 pb-8 pl-10 text-right text-5xl font-light tracking-tight text-white md:pl-50 md:text-7xl xl:pl-120">

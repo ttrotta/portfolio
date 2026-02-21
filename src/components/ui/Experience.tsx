@@ -43,7 +43,7 @@ export default function Experience() {
   }, []);
 
   return (
-    <section className="relative z-10 w-full py-24">
+    <section id="experience" className="relative z-10 w-full py-24">
       <div className="container mx-auto px-6 md:px-12">
         <h2 className="xpTitle font-heading md: relative mb-10 inline-block cursor-pointer overflow-hidden border-b border-neutral-800 pr-10 pb-8 pl-10 text-5xl font-light tracking-tight md:pr-50 md:text-7xl xl:pr-120">
           Experience

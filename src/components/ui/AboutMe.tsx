@@ -122,6 +122,7 @@ export default function AboutMe() {
 
   return (
     <section
+      id="about"
       ref={container}
       className="relative z-10 min-h-screen w-full px-20 pt-20 md:pt-20"
     >
@@ -148,7 +149,7 @@ export default function AboutMe() {
                 data-rotate="5"
               >
                 <Image
-                  src="/projects/ss1.avif"
+                  src="/argentinian-sun.png"
                   alt="About me photo"
                   width={400}
                   height={400}
@@ -165,7 +166,7 @@ export default function AboutMe() {
                 data-rotate="-5"
               >
                 <Image
-                  src="/projects/sr1.png"
+                  src="/argentinian-sun.png"
                   alt="About me photo"
                   width={400}
                   height={400}
