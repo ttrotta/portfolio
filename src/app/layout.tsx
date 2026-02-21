@@ -10,6 +10,7 @@ import {
 import type { Metadata } from "next";
 import SmoothScroll from "@/components/SmoothScroll";
 import { CustomScroll } from "@/components/CustomScroll";
+import Navbar from "@/components/ui/Navbar";
 
 export const metadata: Metadata = {
   title: "Thiago Trotta",
@@ -28,6 +29,7 @@ export default function RootLayout({
       className={`${inter.variable} ${playfairDisplay.variable} ${dmSans.variable} ${satisfy.variable} ${spaceGrotesk.variable} ${michroma.variable}`}
     >
       <body className={"bg-background font-body text-texting antialiased"}>
+        <Navbar />
         <CustomScroll />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
