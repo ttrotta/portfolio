@@ -4,7 +4,7 @@ export interface Skill {
   dark?: boolean;
 }
 
-export const skills: Skill[] = [
+export const techStack: Skill[] = [
   { name: "React", logo: "/tech-stack-logos/react.svg" },
   { name: "Next.js", logo: "/tech-stack-logos/nextjs.svg", dark: true },
   { name: "TypeScript", logo: "/tech-stack-logos/typescript.svg" },

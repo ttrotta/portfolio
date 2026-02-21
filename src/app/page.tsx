@@ -2,7 +2,7 @@ import Hero from "@/components/ui/Hero";
 import Experience from "@/components/ui/Experience";
 import Education from "@/components/ui/Education";
 import Projects from "@/components/ui/Projects";
-import Skills from "@/components/ui/Skills";
+import TechStack from "@/components/ui/TechStack";
 import Footer from "@/components/ui/Footer";
 import Background from "@/components/ui/Background";
 import AboutMe from "@/components/ui/AboutMe";
@@ -16,7 +16,7 @@ export default function Home() {
       <Experience />
       <Education />
       <Projects />
-      <Skills />
+      <TechStack />
       <AboutMe />
       <Logo />
       <Footer />

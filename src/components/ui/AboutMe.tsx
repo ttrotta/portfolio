@@ -128,7 +128,7 @@ export default function AboutMe() {
     >
       <div className="mx-auto max-w-7xl px-6 md:px-2">
         <h2 className="about-title font-heading mb-24 text-5xl font-bold text-white md:text-7xl">
-          Who am I?
+          About me
         </h2>
 
         <div className="space-y-16 md:space-y-6">
@@ -145,15 +145,15 @@ export default function AboutMe() {
             </div>
             <div className="hidden justify-center md:flex">
               <div
-                className="about-photo overflow-hidden rounded-3xl border border-neutral-800 shadow-2xl shadow-black/50"
-                data-rotate="5"
+                className="about-photo overflow-hidden rounded-3xl shadow-2xl shadow-black/50"
+                data-rotate="12"
               >
                 <Image
-                  src="/argentinian-sun1.png"
+                  src="/argentinian-sun.avif"
                   alt="About me photo"
                   width={400}
                   height={400}
-                  className="h-72 w-72 object-cover sm:h-80 sm:w-80"
+                  className="h-82 w-82 rounded-full object-cover sm:h-80 sm:w-80"
                 />
               </div>
             </div>
@@ -162,15 +162,15 @@ export default function AboutMe() {
           <div className="about-block grid items-center gap-10 md:grid-cols-[1fr_1.4fr] md:gap-10">
             <div className="order-2 hidden justify-center md:order-1 md:flex">
               <div
-                className="about-photo overflow-hidden rounded-3xl border border-neutral-800 shadow-2xl shadow-black/50"
-                data-rotate="-5"
+                className="about-photo overflow-hidden rounded-3xl shadow-2xl shadow-black/50"
+                data-rotate="-12"
               >
                 <Image
-                  src="/argentinian-sun1.png"
+                  src="/networking.avif"
                   alt="About me photo"
                   width={400}
                   height={400}
-                  className="h-72 w-72 object-cover sm:h-80 sm:w-80"
+                  className="h-82 w-82 rounded-full object-cover sm:h-80 sm:w-80"
                 />
               </div>
             </div>

@@ -19,8 +19,8 @@ const NAV_LINKS = [
   { label: "EXPERIENCE", href: "#experience", isPage: false },
   { label: "EDUCATION", href: "#education", isPage: false },
   { label: "PROJECTS", href: "/projects", isPage: true },
-  { label: "SKILLS", href: "#skills", isPage: false },
-  { label: "ABOUT", href: "#about", isPage: false },
+  { label: "TECH STACK", href: "#skills", isPage: false },
+  { label: "ABOUT ME", href: "#about", isPage: false },
   { label: "CONTACT", href: "#footer", isPage: false },
 ];
 

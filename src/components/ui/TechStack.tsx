@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
-import { skills } from "@/data/skillsData";
+import { techStack } from "@/data/stackData";
 import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -20,7 +20,7 @@ const CABLE_D = [
   "C 1200 1470, 1250 1560, 1400 1600",
 ].join(" ");
 
-export default function Skills() {
+export default function TechStack() {
   const sectionRef = useRef<HTMLElement>(null);
   const energyPathRef = useRef<SVGPathElement>(null);
 
@@ -52,7 +52,7 @@ export default function Skills() {
 
   return (
     <section
-      id="skills"
+      id="tech-stack"
       ref={sectionRef}
       className="relative z-10 mt-20 w-full overflow-hidden py-48 md:py-64"
     >
@@ -93,12 +93,17 @@ export default function Skills() {
       </svg>
 
       <div className="relative z-10 mx-auto max-w-2xl px-6 md:px-12">
-        <h2 className="font-heading mb-16 text-center text-5xl font-bold text-white md:text-7xl">
-          Tech Stack
-        </h2>
+        <div className="mb-16 text-center">
+          <p className="font-michroma mb-4 text-[0.6rem] tracking-[0.3em] text-neutral-400 uppercase md:text-xs">
+            My preferred
+          </p>
+          <h2 className="font-heading text-5xl font-bold text-white md:text-7xl">
+            Tech Stack
+          </h2>
+        </div>
 
         <div className="grid grid-cols-3 gap-6 sm:grid-cols-4">
-          {skills.map((skill) => (
+          {techStack.map((skill) => (
             <div
               key={skill.name}
               className="group flex items-center justify-center rounded-xl border border-neutral-800 bg-black p-4 transition-all duration-300 hover:border-neutral-600 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]"
