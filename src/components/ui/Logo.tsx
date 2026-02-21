@@ -122,7 +122,7 @@ export default function Logo({
 
   return (
     <div
-      className={`relative z-50 flex w-full items-center justify-center py-24 ${className}`}
+      className={`relative z-50 flex w-full items-center justify-center py-32 ${className}`}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       {...props}
@@ -132,7 +132,7 @@ export default function Logo({
         viewBox="0 0 112 66"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
-        className="h-auto w-48 animate-[pulse_3s_ease-in-out_infinite] overflow-visible drop-shadow-[0_0_5px_rgba(255,255,255,0.3)] transition-all duration-1000 ease-in-out hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.7)] sm:w-64 md:w-80"
+        className="h-auto w-24 animate-[pulse_3s_ease-in-out_infinite] overflow-visible drop-shadow-[0_0_5px_rgba(255,255,255,0.3)] transition-all duration-1000 ease-in-out hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.7)] sm:w-32 md:w-40"
         style={{ pointerEvents: "none" }}
       >
         <path ref={path1Ref} d={initialD1} />

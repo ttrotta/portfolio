@@ -1,14 +1,64 @@
+"use client";
+
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import ContactForm from "./ContactForm";
+import { useRef } from "react";
+import gsap from "gsap";
+import SplitText from "gsap/src/SplitText";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP, SplitText);
 
 export default function Footer() {
+  const container = useRef<HTMLElement>(null);
+  const textRef = useRef<HTMLHeadingElement>(null);
+
+  useGSAP(
+    () => {
+      if (!textRef.current) return;
+
+      const split = new SplitText(textRef.current, { type: "chars" });
+
+      gsap.set(split.chars, {
+        color: "rgba(255, 255, 255, 0.2)",
+        textShadow: "0px 0px 0px rgba(255, 255, 255, 0)",
+      });
+
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 1.5 });
+
+      tl.to(split.chars, {
+        keyframes: [
+          {
+            color: "rgba(255, 255, 255, 1)",
+            textShadow: "0px 0px 15px rgba(255, 255, 255, 0.8)",
+            duration: 0.15,
+          },
+          {
+            color: "rgba(255, 255, 255, 0.2)",
+            textShadow: "0px 0px 0px rgba(255, 255, 255, 0)",
+            duration: 0.15,
+          },
+        ],
+        stagger: 0.15,
+      });
+
+      return () => {
+        split.revert();
+      };
+    },
+    { scope: container },
+  );
+
   return (
-    <footer id="footer" className="relative z-20 w-full">
+    <footer id="footer" ref={container} className="relative z-20 w-full">
       <div className="flex flex-col items-center justify-center px-6 pb-16">
         <p className="font-body mb-3 text-sm tracking-widest text-neutral-500 uppercase">
           Get in touch
         </p>
-        <h2 className="font-heading mb-10 text-center text-4xl font-bold text-white md:text-6xl">
+        <h2
+          ref={textRef}
+          className="font-heading mb-10 text-center text-4xl font-bold text-white md:text-6xl"
+        >
           Contact Me
         </h2>
 
