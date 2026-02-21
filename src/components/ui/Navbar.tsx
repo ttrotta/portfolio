@@ -1,10 +1,18 @@
 "use client";
 
+declare global {
+  interface Window {
+    __navbarScrolling?: boolean;
+  }
+}
+
 import { useRef, useState, useCallback } from "react";
+import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Link from "next/link";
 import Image from "next/image";
+import { projects } from "@/data/projectsData";
 
 const NAV_LINKS = [
   { label: "HOME", href: "#home", isPage: false },
@@ -17,6 +25,7 @@ const NAV_LINKS = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
@@ -108,41 +117,56 @@ export default function Navbar() {
     setIsOpen((prev) => !prev);
   }, [isOpen]);
 
-  const handleLinkClick = useCallback((href: string, isPage: boolean) => {
-    const tl = tlRef.current;
-    if (tl) tl.reverse();
+  const handleLinkClick = useCallback(
+    (href: string, isPage: boolean) => {
+      const tl = tlRef.current;
+      if (tl) tl.reverse();
 
-    // reset hamburger
-    gsap.to(topLineRef.current, {
-      rotation: 0,
-      y: 0,
-      duration: 0.4,
-      ease: "power2.inOut",
-    });
-    gsap.to(bottomLineRef.current, {
-      rotation: 0,
-      y: 0,
-      duration: 0.4,
-      ease: "power2.inOut",
-    });
+      // reset hamburger
+      gsap.to(topLineRef.current, {
+        rotation: 0,
+        y: 0,
+        duration: 0.4,
+        ease: "power2.inOut",
+      });
+      gsap.to(bottomLineRef.current, {
+        rotation: 0,
+        y: 0,
+        duration: 0.4,
+        ease: "power2.inOut",
+      });
 
-    document.body.style.overflow = "";
-    setIsOpen(false);
+      document.body.style.overflow = "";
+      setIsOpen(false);
 
-    if (!isPage && href.startsWith("#")) {
-      setTimeout(() => {
-        const id = href.replace("#", "");
-        if (id === "home") {
-          window.scrollTo({ top: 0, behavior: "smooth" });
+      if (!isPage && href.startsWith("#")) {
+        if (pathname !== "/") {
+          window.location.href = "/" + href;
           return;
         }
-        const el = document.getElementById(id);
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 600);
-    }
-  }, []);
+
+        // Block Projects snap during navbar-triggered scroll
+        window.__navbarScrolling = true;
+
+        setTimeout(() => {
+          const id = href.replace("#", "");
+          if (id === "home") {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          } else {
+            const el = document.getElementById(id);
+            if (el) {
+              el.scrollIntoView({ behavior: "smooth" });
+            }
+          }
+          // Unblock after scroll completes
+          setTimeout(() => {
+            window.__navbarScrolling = false;
+          }, 1200);
+        }, 600);
+      }
+    },
+    [pathname],
+  );
 
   return (
     <>
@@ -232,10 +256,14 @@ export default function Navbar() {
               );
 
               if (link.isPage) {
+                let href = link.href;
+                if (link.label === "PROJECTS") {
+                  href = `/projects/${projects[0].slug}`;
+                }
                 return (
                   <Link
                     key={link.label}
-                    href={link.href}
+                    href={href}
                     ref={(el) => {
                       linkRefs.current[i] = el;
                     }}

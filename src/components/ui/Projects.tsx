@@ -14,9 +14,22 @@ export default function Projects() {
     const section = sectionRef.current;
     if (!section || !lenis) return;
 
+    // Block snap if page loaded with a hash pointing to another section (cross-page nav)
+    const hash = window.location.hash;
+    if (hash && hash !== "#projects") {
+      window.__navbarScrolling = true;
+      setTimeout(() => {
+        window.__navbarScrolling = false;
+        history.replaceState(null, "", window.location.pathname);
+      }, 2000);
+    }
+
     const enterObserver = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasSnapped.current) {
+          // Don't snap if the navbar is currently scrolling to another section
+          if (window.__navbarScrolling) return;
+
           hasSnapped.current = true;
           lenis.scrollTo(section, {
             duration: 2,
@@ -49,7 +62,7 @@ export default function Projects() {
     <section
       ref={sectionRef}
       id="projects"
-      className="relative z-10 min-h-screen w-full"
+      className="relative z-10 mt-20 min-h-screen w-full"
     >
       <div className="flex w-full flex-col items-center justify-center overflow-hidden px-10">
         <div className="pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 -translate-y-1/2">

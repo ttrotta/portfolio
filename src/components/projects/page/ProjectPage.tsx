@@ -2,7 +2,6 @@
 
 import { Project } from "../../../data/projectsData";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import { FiArrowDown } from "react-icons/fi";
 import ImageLightbox from "./ImageLightbox";
@@ -150,11 +149,9 @@ export default function ProjectPage({ project }: ProjectPageProps) {
 }
 
 const BackButton = () => {
-  const router = useRouter();
-
   return (
     <button
-      onClick={() => router.push("/#projects")}
+      onClick={() => (window.location.href = "/#projects")}
       className="absolute top-31 left-2 z-50 cursor-pointer transition-colors hover:text-gray-400 sm:top-32 md:left-4 lg:fixed lg:top-35"
       aria-label="Back to projects"
     >
