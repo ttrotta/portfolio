@@ -7,19 +7,22 @@ import Footer from "@/components/ui/Footer";
 import Background from "@/components/ui/Background";
 import AboutMe from "@/components/ui/AboutMe";
 import Logo from "@/components/ui/Logo";
+import PageWrapper from "@/components/ui/PageWrapper";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen w-full flex-col">
-      <Background />
-      <Hero />
-      <Experience />
-      <Education />
-      <Projects />
-      <TechStack />
-      <AboutMe />
-      <Logo />
-      <Footer />
+      <PageWrapper>
+        <Background />
+        <Hero />
+        <Experience />
+        <Education />
+        <Projects />
+        <TechStack />
+        <AboutMe />
+        <Logo />
+        <Footer />
+      </PageWrapper>
     </main>
   );
 }

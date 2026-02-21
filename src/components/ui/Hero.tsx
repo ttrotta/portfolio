@@ -6,46 +6,54 @@ import ScrollIndicator from "../ScrollIndicator";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SplitText from "gsap/src/SplitText";
+import { usePreloader } from "@/contexts/PreloaderContext";
 
 export default function Hero() {
-  useGSAP(() => {
-    const splitName = new SplitText(".fullname", { type: "chars" });
-    const splitTitle = new SplitText(".job-title", { type: "chars" });
+  const { isReady } = usePreloader();
 
-    const allChars = [...splitName.chars, ...splitTitle.chars];
-    const icons = gsap.utils.toArray(".hero-logo");
+  useGSAP(
+    () => {
+      if (!isReady) return;
 
-    const tl = gsap.timeline();
+      const splitName = new SplitText(".fullname", { type: "chars" });
+      const splitTitle = new SplitText(".job-title", { type: "chars" });
 
-    gsap.set([allChars, icons], { opacity: 0.1, filter: "brightness(0.5)" });
+      const allChars = [...splitName.chars, ...splitTitle.chars];
+      const icons = gsap.utils.toArray(".hero-logo");
 
-    tl.to(allChars, {
-      duration: 0.5,
-      opacity: 1,
-      filter: "brightness(1.5) drop-shadow(0 0 10px rgba(255,255,255,0.3))",
-      stagger: { amount: 0.8, from: "random" },
-      ease: "rough({ template: none, strength: 2, points: 20, taper: 'none', randomize: true, clamp: true })",
-    })
-      .to(allChars, {
-        opacity: 0.6,
-        duration: 0.1,
-        repeat: 3,
-        yoyo: true,
-        ease: "none",
-        stagger: { amount: 0.2, from: "random" },
-      })
-      .to(allChars, {
-        opacity: 1,
-        filter: "brightness(1) drop-shadow(0 0 0px rgba(255,255,255,0))",
+      const tl = gsap.timeline();
+
+      gsap.set([allChars, icons], { opacity: 0.1, filter: "brightness(0.5)" });
+
+      tl.to(allChars, {
         duration: 0.5,
+        opacity: 1,
+        filter: "brightness(1.5) drop-shadow(0 0 10px rgba(255,255,255,0.3))",
+        stagger: { amount: 0.8, from: "random" },
+        ease: "rough({ template: none, strength: 2, points: 20, taper: 'none', randomize: true, clamp: true })",
       })
-      .fromTo(
-        icons,
-        { scale: 0, opacity: 0 },
-        { scale: 1, opacity: 1, stagger: 0.2, ease: "back.out(1.7)" },
-        "-=0.5",
-      );
-  });
+        .to(allChars, {
+          opacity: 0.6,
+          duration: 0.1,
+          repeat: 3,
+          yoyo: true,
+          ease: "none",
+          stagger: { amount: 0.2, from: "random" },
+        })
+        .to(allChars, {
+          opacity: 1,
+          filter: "brightness(1) drop-shadow(0 0 0px rgba(255,255,255,0))",
+          duration: 0.5,
+        })
+        .fromTo(
+          icons,
+          { scale: 0, opacity: 0 },
+          { scale: 1, opacity: 1, stagger: 0.2, ease: "back.out(1.7)" },
+          "-=0.5",
+        );
+    },
+    { dependencies: [isReady] },
+  );
 
   return (
     <section className="pointer-events-none relative flex h-screen flex-col items-center justify-center overflow-hidden px-10 md:px-24">
