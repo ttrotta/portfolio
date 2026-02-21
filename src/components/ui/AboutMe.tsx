@@ -149,7 +149,7 @@ export default function AboutMe() {
                 data-rotate="5"
               >
                 <Image
-                  src="/argentinian-sun.png"
+                  src="/argentinian-sun1.png"
                   alt="About me photo"
                   width={400}
                   height={400}
@@ -166,7 +166,7 @@ export default function AboutMe() {
                 data-rotate="-5"
               >
                 <Image
-                  src="/argentinian-sun.png"
+                  src="/argentinian-sun1.png"
                   alt="About me photo"
                   width={400}
                   height={400}
