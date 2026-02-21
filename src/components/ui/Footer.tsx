@@ -1,5 +1,5 @@
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { HiMail } from "react-icons/hi";
+import ContactForm from "./ContactForm";
 
 export default function Footer() {
   return (
@@ -12,13 +12,7 @@ export default function Footer() {
           Contact Me
         </h2>
 
-        <a
-          // href="mailto:complete after testing"
-          className="group flex items-center gap-3 rounded-full border border-neutral-700 bg-neutral-900/60 px-8 py-4 text-lg font-medium text-neutral-200 backdrop-blur-sm transition-all duration-300 hover:border-neutral-500 hover:bg-neutral-800/80 hover:text-white"
-        >
-          <HiMail className="h-5 w-5 text-neutral-400 transition-colors group-hover:text-white" />
-          emailtemplate@example.com
-        </a>
+        <ContactForm />
 
         <div className="mt-10 flex gap-8">
           <a
@@ -48,7 +42,7 @@ export default function Footer() {
 
       <div className="flex items-center justify-center px-6 py-8">
         <p className="font-body text-sm text-neutral-600">
-          &copy; {new Date().getFullYear()} - Thiago Trotta.
+          &copy; {new Date().getFullYear()} Thiago Trotta.
         </p>
       </div>
     </footer>
