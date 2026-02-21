@@ -90,9 +90,29 @@ export default function Footer() {
         <div className="h-px bg-neutral-800" />
       </div>
 
-      <div className="flex items-center justify-center px-6 py-8">
-        <p className="font-body text-sm text-neutral-600">
+      <div className="font-body flex flex-col items-center justify-center gap-2 px-6 py-8 text-center text-neutral-600">
+        <p className="text-sm">
           &copy; {new Date().getFullYear()} Thiago Trotta.
+        </p>
+        <p className="text-xs text-neutral-600/80">
+          <a
+            href="https://skfb.ly/6RzwQ"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-neutral-400"
+          >
+            &quot;Lightbulb&quot;
+          </a>{" "}
+          3D model by Autaritus, licensed under{" "}
+          <a
+            href="http://creativecommons.org/licenses/by/4.0/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-neutral-400"
+          >
+            CC BY 4.0
+          </a>
+          .
         </p>
       </div>
     </footer>
