@@ -1,5 +1,5 @@
 import ProjectBackground from "@/components/ui/ProjectBackground";
-import TransitionProvider from "@/contexts/TransitionProvider";
+import TransitionProvider from "@/contexts/TransitionContext";
 
 export default function Project({
   children,

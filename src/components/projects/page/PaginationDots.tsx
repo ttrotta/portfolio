@@ -1,5 +1,5 @@
 import { Project, projects } from "../../../data/projectsData";
-import { useTransition } from "@/contexts/TransitionProvider";
+import { useTransition } from "@/contexts/TransitionContext";
 
 interface PaginationDotsProps {
   currentId: Project["id"];
