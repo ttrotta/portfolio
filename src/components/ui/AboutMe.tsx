@@ -124,10 +124,10 @@ export default function AboutMe() {
     <section
       id="about"
       ref={container}
-      className="relative z-10 min-h-screen w-full px-20 pt-20 md:pt-20"
+      className="relative z-10 min-h-screen w-full px-4 pt-20 md:px-20 md:pt-20"
     >
       <div className="mx-auto max-w-7xl px-6 md:px-2">
-        <h2 className="about-title font-heading mb-24 text-5xl font-bold text-white md:text-7xl">
+        <h2 className="about-title font-heading mb-24 text-4xl font-bold text-white md:text-7xl">
           About me
         </h2>
 

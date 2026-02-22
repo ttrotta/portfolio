@@ -4,8 +4,18 @@ import { Canvas } from "@react-three/fiber";
 import { Environment } from "@react-three/drei";
 import Lightbulb from "../lights/Lightbulb";
 import { Particles } from "../particles/Particles";
+import { useState, useEffect } from "react";
 
 export default function Background() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className="pointer-events-none fixed inset-0 z-0">
       <Canvas
@@ -20,7 +30,7 @@ export default function Background() {
         <directionalLight position={[5, 5, 5]} intensity={0.4} />
         <Environment preset="night" />
         <Particles />
-        <Lightbulb />
+        {!isMobile && <Lightbulb />}
       </Canvas>
     </div>
   );

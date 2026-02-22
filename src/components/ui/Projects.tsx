@@ -70,7 +70,7 @@ export default function Projects() {
     >
       <div className="flex w-full flex-col items-center justify-center overflow-hidden px-10">
         <div className="pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <h2 className="font-heading text-5xl font-bold text-white md:text-7xl">
+          <h2 className="font-heading text-4xl font-bold text-white md:text-7xl">
             Projects
           </h2>
         </div>

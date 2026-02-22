@@ -26,44 +26,48 @@ export default function TechStack() {
 
   useGSAP(
     () => {
-      const path = energyPathRef.current;
-      if (path) {
-        const length = path.getTotalLength();
+      const mm = gsap.matchMedia();
 
-        gsap.set(path, {
-          strokeDasharray: length,
-          strokeDashoffset: length,
-        });
+      mm.add("(min-width: 768px)", () => {
+        const path = energyPathRef.current;
+        if (path) {
+          const length = path.getTotalLength();
 
-        gsap.to(path, {
-          strokeDashoffset: 0,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            scrub: 1,
+          gsap.set(path, {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+          });
+
+          gsap.to(path, {
+            strokeDashoffset: 0,
+            ease: "none",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 80%",
+              end: "bottom 20%",
+              scrub: 1,
+            },
+          });
+        }
+
+        gsap.fromTo(
+          ".tech-card",
+          {
+            y: 100,
           },
-        });
-      }
-
-      gsap.fromTo(
-        ".tech-card",
-        {
-          y: 100,
-        },
-        {
-          y: -100,
-          stagger: 0.05,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 90%",
-            end: "bottom 10%",
-            scrub: 1.5,
+          {
+            y: -100,
+            stagger: 0.05,
+            ease: "none",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 90%",
+              end: "bottom 10%",
+              scrub: 1.5,
+            },
           },
-        },
-      );
+        );
+      });
     },
     { scope: sectionRef },
   );
@@ -75,7 +79,7 @@ export default function TechStack() {
       className="relative z-10 mt-20 w-full overflow-hidden py-48 md:py-80 lg:py-128"
     >
       <svg
-        className="pointer-events-none absolute top-0 left-0 z-0 h-full w-full filter-[drop-shadow(0_0_12px_rgba(225,219,65,0.4))] will-change-transform"
+        className="pointer-events-none absolute top-0 left-0 z-0 hidden h-full w-full filter-[drop-shadow(0_0_12px_rgba(225,219,65,0.4))] will-change-transform md:block"
         viewBox="0 0 1200 1800"
         preserveAspectRatio="xMidYMin slice"
         aria-hidden="true"
@@ -105,7 +109,7 @@ export default function TechStack() {
           <p className="font-michroma mb-4 text-[0.6rem] tracking-[0.3em] text-neutral-400 uppercase md:text-xs">
             My preferred
           </p>
-          <h2 className="font-heading text-5xl font-bold text-white md:text-7xl lg:text-8xl">
+          <h2 className="font-heading text-4xl font-bold text-white md:text-7xl lg:text-8xl">
             Tech Stack
           </h2>
         </div>
