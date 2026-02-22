@@ -75,21 +75,11 @@ export default function TechStack() {
       className="relative z-10 mt-20 w-full overflow-hidden py-48 md:py-80 lg:py-128"
     >
       <svg
-        className="pointer-events-none absolute top-0 left-0 z-0 h-full w-full"
+        className="pointer-events-none absolute top-0 left-0 z-0 h-full w-full filter-[drop-shadow(0_0_12px_rgba(225,219,65,0.4))] will-change-transform"
         viewBox="0 0 1200 1800"
         preserveAspectRatio="xMidYMin slice"
         aria-hidden="true"
       >
-        <defs>
-          <filter id="skills-glow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="12" result="coloredBlur" />
-            <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-
         <path
           d={CABLE_D}
           stroke="#1a233a"
@@ -106,7 +96,7 @@ export default function TechStack() {
           strokeWidth="6"
           fill="none"
           strokeLinecap="round"
-          filter="url(#skills-glow)"
+          className="will-change-[stroke-dashoffset]"
         />
       </svg>
 
