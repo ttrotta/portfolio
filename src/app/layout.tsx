@@ -7,10 +7,15 @@ import {
   spaceGrotesk,
   michroma,
 } from "../fonts";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import SmoothScroll from "@/components/SmoothScroll";
 import { CustomScroll } from "@/components/CustomScroll";
 import Navbar from "@/components/ui/Navbar";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: "Thiago Trotta",
