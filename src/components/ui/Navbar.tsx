@@ -236,7 +236,7 @@ export default function Navbar() {
             Sections
           </span>
 
-          <div className="flex flex-col gap-2 md:gap-3">
+          <div className="flex flex-col gap-1 md:gap-0">
             {NAV_LINKS.map((link, i) => {
               const inner = (
                 <span className="group relative flex items-center gap-4 overflow-hidden md:gap-6">
@@ -244,7 +244,7 @@ export default function Navbar() {
                     {String(i + 1).padStart(2, "0")}
                   </span>
 
-                  <span className="font-michroma relative text-4xl font-normal tracking-widest text-white/90 transition-all duration-500 group-hover:tracking-[0.2em] group-hover:text-white sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+                  <span className="font-michroma relative text-[clamp(1.5rem,4.5vh,3rem)] font-normal tracking-widest text-white/90 transition-all duration-500 group-hover:tracking-[0.2em] group-hover:text-white md:text-[clamp(2.5rem,6.5vh,5rem)]">
                     {link.label}
                     <span className="absolute bottom-0 left-0 h-px w-0 bg-white transition-all duration-500 group-hover:w-full" />
                   </span>
