@@ -54,7 +54,7 @@ export default function TechStack() {
     <section
       id="tech-stack"
       ref={sectionRef}
-      className="relative z-10 mt-20 w-full overflow-hidden py-48 md:py-64"
+      className="relative z-10 mt-20 w-full overflow-hidden py-48 md:py-80 lg:py-128"
     >
       <svg
         className="pointer-events-none absolute top-0 left-0 z-0 h-full w-full"
@@ -92,36 +92,42 @@ export default function TechStack() {
         />
       </svg>
 
-      <div className="relative z-10 mx-auto max-w-2xl px-6 md:px-12">
-        <div className="mb-16 text-center">
+      <div className="relative z-10 mx-auto max-w-2xl px-6 md:max-w-6xl md:px-12 lg:max-w-350">
+        <div className="mb-16 text-center md:mb-24 lg:mb-32">
           <p className="font-michroma mb-4 text-[0.6rem] tracking-[0.3em] text-neutral-400 uppercase md:text-xs">
             My preferred
           </p>
-          <h2 className="font-heading text-5xl font-bold text-white md:text-7xl">
+          <h2 className="font-heading text-5xl font-bold text-white md:text-7xl lg:text-8xl">
             Tech Stack
           </h2>
         </div>
 
-        <div className="grid grid-cols-3 gap-6 sm:grid-cols-4">
-          {techStack.map((skill) => (
-            <div
-              key={skill.name}
-              className="group flex items-center justify-center rounded-xl border border-neutral-800 bg-black p-4 transition-all duration-300 hover:border-neutral-600 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]"
-              title={skill.name}
-            >
+        <div className="grid grid-cols-3 gap-6 sm:grid-cols-4 md:grid-cols-6 md:gap-x-6 md:gap-y-12 lg:gap-x-8 lg:gap-y-20">
+          {techStack.map((skill, index) => {
+            let colStartClass = "";
+            if (index === 4) colStartClass = "md:col-start-2";
+            if (index === 8) colStartClass = "md:col-start-3";
+
+            return (
               <div
-                className={`flex items-center justify-center rounded-xl p-2 ${skill.dark ? "bg-white" : ""}`}
+                key={skill.name}
+                className={`group flex aspect-square items-center justify-center rounded-2xl border border-neutral-800 bg-black p-4 transition-all duration-300 hover:border-neutral-600 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] md:p-6 lg:p-8 ${colStartClass}`}
+                title={skill.name}
               >
-                <Image
-                  src={skill.logo}
-                  alt={skill.name}
-                  width={48}
-                  height={48}
-                  className="h-10 w-10 object-contain transition-transform duration-300 group-hover:scale-110 sm:h-12 sm:w-12"
-                />
+                <div
+                  className={`flex items-center justify-center rounded-xl p-2 md:p-3 lg:p-4 ${skill.dark ? "bg-white" : ""}`}
+                >
+                  <Image
+                    src={skill.logo}
+                    alt={skill.name}
+                    width={128}
+                    height={128}
+                    className="h-10 w-10 object-contain transition-transform duration-300 group-hover:scale-110 sm:h-12 sm:w-12 md:h-20 md:w-20 lg:h-32 lg:w-32"
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

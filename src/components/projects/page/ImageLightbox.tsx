@@ -33,17 +33,17 @@ export default function ImageLightbox({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/90 backdrop-blur-sm">
+    <div className="fixed inset-0 z-120 flex items-center justify-center bg-black/90 backdrop-blur-sm">
       <button
         onClick={onClose}
-        className="absolute top-8 right-8 text-white hover:text-gray-400"
+        className="absolute top-8 right-8 z-120 mt-10 text-white hover:text-gray-400"
       >
         <IoCloseOutline className="h-12 w-12" />
       </button>
 
       <button
         onClick={onPrev}
-        className="absolute left-8 text-white hover:text-gray-400"
+        className="absolute left-8 z-120 text-white hover:text-gray-400"
       >
         <MdPlayArrow className="h-16 w-16 rotate-180" />
       </button>
@@ -60,7 +60,7 @@ export default function ImageLightbox({
 
       <button
         onClick={onNext}
-        className="absolute right-8 text-white hover:text-gray-400"
+        className="absolute right-8 z-[120] text-white hover:text-gray-400"
       >
         <MdPlayArrow className="h-16 w-16" />
       </button>
