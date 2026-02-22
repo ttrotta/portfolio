@@ -96,7 +96,12 @@ export default function AboutMe() {
       let { splits, triggers } = buildAnimations();
 
       let resizeTimer: ReturnType<typeof setTimeout>;
+      let windowWidth = window.innerWidth;
+
       const onResize = () => {
+        if (window.innerWidth === windowWidth) return;
+        windowWidth = window.innerWidth;
+
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
           triggers.forEach((st) => st.kill());

@@ -244,7 +244,7 @@ export default function Navbar() {
                     {String(i + 1).padStart(2, "0")}
                   </span>
 
-                  <span className="font-michroma relative text-[clamp(1.5rem,4.5vh,3rem)] font-normal tracking-widest text-white/90 transition-all duration-500 group-hover:tracking-[0.2em] group-hover:text-white md:text-[clamp(2.5rem,6.5vh,5rem)]">
+                  <span className="font-michroma relative text-[clamp(1.5rem,4.5vh,3rem)] font-normal tracking-widest whitespace-nowrap text-white/90 transition-all duration-500 group-hover:tracking-[0.2em] group-hover:text-white md:text-[clamp(2.5rem,6.5vh,5rem)] md:whitespace-normal">
                     {link.label}
                     <span className="absolute bottom-0 left-0 h-px w-0 bg-white transition-all duration-500 group-hover:w-full" />
                   </span>
