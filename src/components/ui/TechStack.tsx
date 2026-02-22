@@ -27,25 +27,43 @@ export default function TechStack() {
   useGSAP(
     () => {
       const path = energyPathRef.current;
-      if (!path) return;
+      if (path) {
+        const length = path.getTotalLength();
 
-      const length = path.getTotalLength();
+        gsap.set(path, {
+          strokeDasharray: length,
+          strokeDashoffset: length,
+        });
 
-      gsap.set(path, {
-        strokeDasharray: length,
-        strokeDashoffset: length,
-      });
+        gsap.to(path, {
+          strokeDashoffset: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            scrub: 1,
+          },
+        });
+      }
 
-      gsap.to(path, {
-        strokeDashoffset: 0,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          end: "bottom 20%",
-          scrub: 1,
+      gsap.fromTo(
+        ".tech-card",
+        {
+          y: 100,
         },
-      });
+        {
+          y: -100,
+          stagger: 0.05,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 90%",
+            end: "bottom 10%",
+            scrub: 1.5,
+          },
+        },
+      );
     },
     { scope: sectionRef },
   );
@@ -102,28 +120,29 @@ export default function TechStack() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-3 gap-6 sm:grid-cols-4 md:grid-cols-6 md:gap-x-6 md:gap-y-12 lg:gap-x-8 lg:gap-y-20">
+        <div className="tech-grid grid grid-cols-3 gap-6 sm:grid-cols-4 md:grid-cols-6 md:gap-x-6 md:gap-y-12 lg:gap-x-8 lg:gap-y-20">
           {techStack.map((skill, index) => {
             let colStartClass = "";
             if (index === 4) colStartClass = "md:col-start-2";
             if (index === 8) colStartClass = "md:col-start-3";
 
             return (
-              <div
-                key={skill.name}
-                className={`group flex aspect-square items-center justify-center rounded-2xl border border-neutral-800 bg-black p-4 transition-all duration-300 hover:border-neutral-600 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] md:p-6 lg:p-8 ${colStartClass}`}
-                title={skill.name}
-              >
+              <div key={skill.name} className={`tech-card ${colStartClass}`}>
                 <div
-                  className={`flex items-center justify-center rounded-xl p-2 md:p-3 lg:p-4 ${skill.dark ? "bg-white" : ""}`}
+                  className={`group flex aspect-square h-full w-full items-center justify-center rounded-2xl border border-neutral-800 bg-black p-4 transition-all duration-300 hover:border-neutral-600 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] md:p-6 lg:p-8`}
+                  title={skill.name}
                 >
-                  <Image
-                    src={skill.logo}
-                    alt={skill.name}
-                    width={128}
-                    height={128}
-                    className="h-10 w-10 object-contain transition-transform duration-300 group-hover:scale-110 sm:h-12 sm:w-12 md:h-20 md:w-20 lg:h-32 lg:w-32"
-                  />
+                  <div
+                    className={`flex items-center justify-center rounded-xl p-2 md:p-3 lg:p-4 ${skill.dark ? "bg-white" : ""}`}
+                  >
+                    <Image
+                      src={skill.logo}
+                      alt={skill.name}
+                      width={128}
+                      height={128}
+                      className="h-10 w-10 object-contain transition-transform duration-300 group-hover:scale-110 sm:h-12 sm:w-12 md:h-20 md:w-20 lg:h-32 lg:w-32"
+                    />
+                  </div>
                 </div>
               </div>
             );

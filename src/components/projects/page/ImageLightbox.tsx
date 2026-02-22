@@ -60,7 +60,7 @@ export default function ImageLightbox({
 
       <button
         onClick={onNext}
-        className="absolute right-8 z-[120] text-white hover:text-gray-400"
+        className="absolute right-8 z-120 text-white hover:text-gray-400"
       >
         <MdPlayArrow className="h-16 w-16" />
       </button>
