@@ -46,7 +46,7 @@ export default function PaginationDots({ currentId }: PaginationDotsProps) {
                   key={p.id}
                   onClick={() => handleNavigation(p.slug, dir)}
                   title={p.title}
-                  className={`pag-bar w-2 hover:scale-y-125 lg:w-1 ${
+                  className={`pag-bar w-1 hover:scale-y-125 lg:w-1 ${
                     isActive ? "h-8 w-1.5 bg-gray-200" : "h-3.5 bg-gray-700"
                   }`}
                 />

@@ -76,7 +76,7 @@ export default function TechStack() {
     <section
       id="tech-stack"
       ref={sectionRef}
-      className="relative z-10 mt-20 w-full overflow-hidden py-48 md:py-80 lg:py-128"
+      className="relative z-10 w-full overflow-hidden py-12 md:mt-20 md:py-48 md:py-80 lg:py-128"
     >
       <svg
         className="pointer-events-none absolute top-0 left-0 z-0 hidden h-full w-full filter-[drop-shadow(0_0_12px_rgba(225,219,65,0.4))] will-change-transform md:block"

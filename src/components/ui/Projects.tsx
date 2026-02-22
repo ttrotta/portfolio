@@ -93,7 +93,7 @@ export default function Projects() {
           rel="noopener noreferrer"
           className="flex items-center gap-2 hover:opacity-20"
         >
-          <span className="text-[16px]">
+          <span className="text-[12px] md:text-[16px]">
             Visit my <strong>GitHub</strong> to see all my projects!
           </span>
           <FaGithub />

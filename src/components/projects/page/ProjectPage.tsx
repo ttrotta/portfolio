@@ -45,14 +45,6 @@ export default function ProjectPage({ project }: ProjectPageProps) {
       mm.add("(min-width: 1024px)", () => {
         ScrollTrigger.refresh();
 
-        ScrollTrigger.create({
-          trigger: containerRef.current,
-          start: "top 10%",
-          end: "bottom bottom",
-          pin: textColumnRef.current,
-          pinSpacing: false,
-        });
-
         const images = gsap.utils.toArray(".gsap-scroll-img") as HTMLElement[];
 
         images.forEach((img, i) => {
@@ -122,7 +114,7 @@ export default function ProjectPage({ project }: ProjectPageProps) {
             ))}
           </div>
 
-          <div className="order-1 w-full lg:order-2 lg:w-2/5">
+          <div className="order-1 w-full lg:sticky lg:top-32 lg:order-2 lg:h-fit lg:w-2/5">
             <TextColumn
               project={project}
               textColumnRef={textColumnRef}
