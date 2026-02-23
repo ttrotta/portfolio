@@ -94,6 +94,17 @@ export default function Footer() {
         <p className="text-sm">
           &copy; {new Date().getFullYear()} Thiago Trotta.
         </p>
+        <p className="text-xs">
+          View the source code on{" "}
+          <a
+            href="https://github.com/ttrotta/portfolio"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 transition-colors hover:text-neutral-400"
+          >
+            GitHub
+          </a>
+        </p>
         <p className="text-xs text-neutral-600/80">
           <a
             href="https://skfb.ly/6RzwQ"
