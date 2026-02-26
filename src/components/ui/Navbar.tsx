@@ -15,16 +15,33 @@ import Image from "next/image";
 import { projects } from "@/data/projectsData";
 
 const NAV_LINKS = [
-  { label: "HOME", href: "#home", isPage: false },
-  { label: "EXPERIENCE", href: "#experience", isPage: false },
-  { label: "EDUCATION", href: "#education", isPage: false },
-  { label: "PROJECTS", href: "/projects", isPage: true },
-  { label: "TECH STACK", href: "#tech-stack", isPage: false },
-  { label: "ABOUT ME", href: "#about", isPage: false },
-  { label: "CONTACT", href: "#footer", isPage: false },
+  { id: "home", href: "#home", isPage: false },
+  { id: "experience", href: "#experience", isPage: false },
+  { id: "education", href: "#education", isPage: false },
+  { id: "projects", href: "/projects", isPage: true },
+  { id: "techStack", href: "#tech-stack", isPage: false },
+  { id: "aboutMe", href: "#about", isPage: false },
+  { id: "contact", href: "#footer", isPage: false },
 ];
 
-export default function Navbar() {
+export default function Navbar({
+  lang,
+  dict,
+}: {
+  lang: string;
+  dict?: {
+    sections: string;
+    links: {
+      home: string;
+      experience: string;
+      education: string;
+      projects: string;
+      techStack: string;
+      aboutMe: string;
+      contact: string;
+    };
+  };
+}) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -140,8 +157,9 @@ export default function Navbar() {
       setIsOpen(false);
 
       if (!isPage && href.startsWith("#")) {
-        if (pathname !== "/") {
-          window.location.href = "/" + href;
+        const rootPath = `/${lang}`;
+        if (pathname !== rootPath && pathname !== `${rootPath}/`) {
+          window.location.href = `${rootPath}${href}`;
           return;
         }
 
@@ -165,7 +183,7 @@ export default function Navbar() {
         }, 600);
       }
     },
-    [pathname],
+    [pathname, lang],
   );
 
   return (
@@ -190,11 +208,29 @@ export default function Navbar() {
         </a>
 
         <div className="relative z-110 flex items-center gap-6 md:gap-8">
-          <button className="font-michroma group flex items-center gap-1.5 text-[0.65rem] tracking-[0.25em] text-neutral-400 uppercase transition-colors duration-300 hover:text-white">
-            <span className="text-white">EN</span>
+          <div className="font-michroma group flex items-center gap-1.5 text-[0.65rem] tracking-[0.25em] text-neutral-400 uppercase transition-colors duration-300 hover:text-white">
+            <Link
+              href="/en"
+              className={
+                lang === "en"
+                  ? "text-white"
+                  : "text-neutral-500 transition-colors hover:text-white"
+              }
+            >
+              EN
+            </Link>
             <span className="text-neutral-600">/</span>
-            <span>ES</span>
-          </button>
+            <Link
+              href="/es"
+              className={
+                lang === "es"
+                  ? "text-white"
+                  : "text-neutral-500 transition-colors hover:text-white"
+              }
+            >
+              ES
+            </Link>
+          </div>
 
           <span className="h-4 w-px bg-neutral-700" />
 
@@ -233,11 +269,14 @@ export default function Navbar() {
             ref={counterRef}
             className="font-michroma absolute top-28 left-8 text-[0.6rem] tracking-[0.3em] text-neutral-600 uppercase opacity-0 md:left-16 lg:left-24"
           >
-            Sections
+            {dict?.sections || "Sections"}
           </span>
 
           <div className="flex flex-col gap-1 md:gap-0">
             {NAV_LINKS.map((link, i) => {
+              const label = dict?.links
+                ? dict.links[link.id as keyof typeof dict.links]
+                : link.id.toUpperCase();
               const inner = (
                 <span className="group relative flex items-center gap-4 overflow-hidden md:gap-6">
                   <span className="font-michroma w-8 text-[0.55rem] tracking-[0.2em] text-neutral-600 transition-colors duration-300 group-hover:text-white md:w-10 md:text-[0.65rem]">
@@ -245,7 +284,7 @@ export default function Navbar() {
                   </span>
 
                   <span className="font-michroma relative text-[clamp(1.5rem,4.5vh,3rem)] font-normal tracking-widest whitespace-nowrap text-white/90 transition-all duration-500 group-hover:tracking-[0.2em] group-hover:text-white md:text-[clamp(2.5rem,6.5vh,5rem)] md:whitespace-normal">
-                    {link.label}
+                    {label}
                     <span className="absolute bottom-0 left-0 h-px w-0 bg-white transition-all duration-500 group-hover:w-full" />
                   </span>
 
@@ -257,12 +296,12 @@ export default function Navbar() {
 
               if (link.isPage) {
                 let href = link.href;
-                if (link.label === "PROJECTS") {
-                  href = `/projects/${projects[0].slug}`;
+                if (link.id === "projects") {
+                  href = `/${lang}/projects/${projects[0].slug}`;
                 }
                 return (
                   <Link
-                    key={link.label}
+                    key={link.id}
                     href={href}
                     ref={(el) => {
                       linkRefs.current[i] = el;
@@ -277,7 +316,7 @@ export default function Navbar() {
 
               return (
                 <button
-                  key={link.label}
+                  key={link.id}
                   ref={(el) => {
                     linkRefs.current[i] = el;
                   }}

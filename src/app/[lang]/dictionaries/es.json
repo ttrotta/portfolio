@@ -49,7 +49,16 @@
     "licensedUnder": "bajo licencia"
   },
   "navbar": {
-    "sections": "Secciones"
+    "sections": "Secciones",
+    "links": {
+      "home": "INICIO",
+      "experience": "EXPERIENCIA",
+      "education": "EDUCACIÓN",
+      "projects": "PROYECTOS",
+      "techStack": "TECNOLOGÍAS",
+      "aboutMe": "SOBRE MI",
+      "contact": "CONTACTO"
+    }
   },
   "notFound": {
     "title": "Página no encontrada",

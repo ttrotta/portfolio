@@ -49,7 +49,16 @@
     "licensedUnder": "licensed under"
   },
   "navbar": {
-    "sections": "Sections"
+    "sections": "Sections",
+    "links": {
+      "home": "HOME",
+      "experience": "EXPERIENCE",
+      "education": "EDUCATION",
+      "projects": "PROJECTS",
+      "techStack": "TECH STACK",
+      "aboutMe": "ABOUT ME",
+      "contact": "CONTACT"
+    }
   },
   "notFound": {
     "title": "Page Not Found",
