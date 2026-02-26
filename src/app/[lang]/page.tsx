@@ -8,20 +8,32 @@ import Background from "@/components/ui/Background";
 import AboutMe from "@/components/ui/AboutMe";
 import Logo from "@/components/ui/Logo";
 import PageWrapper from "@/components/ui/PageWrapper";
+import { getDictionary, hasLocale } from "./dictionaries";
+import { notFound } from "next/navigation";
 
-export default function Home() {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+
+  if (!hasLocale(lang)) notFound();
+
+  const dict = await getDictionary(lang);
+
   return (
     <main className="flex min-h-screen w-full flex-col">
       <PageWrapper>
         <Background />
-        <Hero />
-        <Experience />
-        <Education />
-        <Projects />
-        <TechStack />
-        <AboutMe />
+        <Hero dict={dict.hero} />
+        <Experience dict={dict.experience} />
+        <Education dict={dict.education} />
+        <Projects dict={dict.projects} />
+        <TechStack dict={dict.techStack} />
+        <AboutMe dict={dict.about} />
         <Logo />
-        <Footer />
+        <Footer dict={{ ...dict.footer, contactForm: dict.contactForm }} />
       </PageWrapper>
     </main>
   );
