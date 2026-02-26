@@ -4,7 +4,16 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
 
-export default function Experience() {
+export default function Experience({
+  dict,
+}: {
+  dict: {
+    title: string;
+    teachingAssistantModeling: string;
+    teachingAssistantFormalMethods: string;
+    uns: string;
+  };
+}) {
   useGSAP(() => {
     SplitText.create(".xpTitle", {
       type: "chars",
@@ -46,7 +55,7 @@ export default function Experience() {
     <section id="experience" className="relative z-10 w-full py-24">
       <div className="container mx-auto px-6 md:px-12">
         <h2 className="xpTitle font-heading md: relative mb-10 inline-block cursor-pointer overflow-hidden border-b border-neutral-800 pr-10 pb-8 pl-10 text-4xl font-light tracking-tight md:pr-50 md:text-6xl xl:pr-120">
-          Experience
+          {dict.title}
         </h2>
 
         <div className="max-w-4xl space-y-14">
@@ -57,12 +66,12 @@ export default function Experience() {
 
             <div className="space-y-2">
               <h3 className="font-body text-xl font-medium text-white transition-colors group-hover:text-neutral-300 md:text-2xl">
-                Teaching Assistant in Software Modeling
+                {dict.teachingAssistantModeling}
               </h3>
               <div className="flex items-center gap-2">
                 <span className="hidden bg-neutral-700 md:block md:h-px md:w-4"></span>
                 <p className="font-body text-sm font-light text-neutral-400">
-                  Universidad Nacional del Sur
+                  {dict.uns}
                 </p>
               </div>
             </div>
@@ -75,12 +84,12 @@ export default function Experience() {
 
             <div className="space-y-2">
               <h3 className="font-body text-xl font-medium text-white transition-colors group-hover:text-neutral-300 md:text-2xl">
-                Teaching Assistant in Formal Methods
+                {dict.teachingAssistantFormalMethods}
               </h3>
               <div className="flex items-center gap-2">
                 <span className="hidden bg-neutral-700 md:block md:h-px md:w-4"></span>
                 <p className="font-body text-sm font-light text-neutral-400">
-                  Universidad Nacional del Sur
+                  {dict.uns}
                 </p>
               </div>
             </div>

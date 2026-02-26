@@ -5,7 +5,16 @@ import { useLenis } from "lenis/react";
 import ProjectPresenter from "../projects/section/ProjectPresenter";
 import { FaGithub } from "react-icons/fa";
 
-export default function Projects() {
+export default function Projects({
+  dict,
+}: {
+  dict: {
+    title: string;
+    scrollHint: string;
+    visitGithub: string;
+    toSeeAll: string;
+  };
+}) {
   const sectionRef = useRef<HTMLElement>(null);
   const hasSnapped = useRef(false);
   const lenis = useLenis();
@@ -71,7 +80,7 @@ export default function Projects() {
       <div className="flex w-full flex-col items-center justify-center overflow-hidden px-10">
         <div className="pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <h2 className="font-heading text-4xl font-bold text-white md:text-7xl">
-            Projects
+            {dict.title}
           </h2>
         </div>
 
@@ -83,7 +92,7 @@ export default function Projects() {
           }`}
         >
           <span className="font-michroma text-2xl tracking-widest text-white/70">
-            Scroll the carousel!
+            {dict.scrollHint}
           </span>
         </div>
 
@@ -94,7 +103,7 @@ export default function Projects() {
           className="flex items-center gap-2 hover:opacity-20"
         >
           <span className="text-[12px] md:text-[16px]">
-            Visit my <strong>GitHub</strong> to see all my projects!
+            {dict.visitGithub} <strong>GitHub</strong> {dict.toSeeAll}
           </span>
           <FaGithub />
         </a>

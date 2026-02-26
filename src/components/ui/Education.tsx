@@ -4,7 +4,19 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
 
-export default function Education() {
+export default function Education({
+  dict,
+}: {
+  dict: {
+    title: string;
+    softwareEngineering: string;
+    unsDcic: string;
+    pres: string;
+    outsideClassroom: string;
+    outsideClassroomDesc: string;
+    always: string;
+  };
+}) {
   useGSAP(() => {
     SplitText.create(".title", {
       type: "chars",
@@ -50,7 +62,7 @@ export default function Education() {
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex justify-end">
           <h2 className="title font-heading mb-10 inline-block border-b border-neutral-800 pb-8 pl-10 text-right text-4xl font-light tracking-tight text-white md:pl-50 md:text-6xl xl:pl-120">
-            Education
+            {dict.title}
           </h2>
         </div>
 
@@ -58,7 +70,7 @@ export default function Education() {
           <article className="edu-article group relative grid w-full max-w-4xl grid-cols-1 gap-4 text-right md:grid-cols-[1fr_150px] md:gap-10">
             <div className="order-2 space-y-2 md:order-1">
               <h3 className="font-body text-xl font-medium text-white transition-colors group-hover:text-neutral-300 md:text-2xl">
-                Software Engineering
+                {dict.softwareEngineering}
               </h3>
               <div className="flex items-center justify-end gap-2">
                 <p className="font-body text-sm font-light text-neutral-400">
@@ -67,7 +79,7 @@ export default function Education() {
                     target="_blank"
                     className="hover:underline"
                   >
-                    Universidad Nacional del Sur - DCIC
+                    {dict.unsDcic}
                   </a>
                 </p>
                 <span className="hidden bg-neutral-700 md:block md:h-px md:w-4"></span>
@@ -75,26 +87,25 @@ export default function Education() {
             </div>
 
             <time className="font-body order-1 pt-1.5 text-xs font-medium tracking-[0.25em] text-neutral-500 uppercase md:order-2">
-              2022 — PRES.
+              2022 — {dict.pres}
             </time>
           </article>
 
           <article className="edu-article group relative grid w-full max-w-4xl grid-cols-1 gap-4 text-right md:grid-cols-[1fr_150px] md:gap-10">
             <div className="order-2 space-y-3 md:order-1">
               <h3 className="font-body text-xl font-medium text-white transition-colors group-hover:text-neutral-300 md:text-2xl">
-                Outside the Classroom
+                {dict.outsideClassroom}
               </h3>
               <div className="flex items-start justify-end gap-2">
                 <p className="font-body max-w-xl text-sm leading-relaxed font-light text-neutral-400">
-                  I dedicate my time to personal projects, constantly exploring
-                  new technologies and adapting to the rapid evolution of AI.
+                  {dict.outsideClassroomDesc}
                 </p>
                 <span className="hidden bg-neutral-700 md:block md:h-px md:w-4"></span>
               </div>
             </div>
 
             <time className="font-body order-1 pt-1.5 text-xs font-medium tracking-[0.25em] text-neutral-500 uppercase md:order-2">
-              ALWAYS
+              {dict.always}
             </time>
           </article>
         </div>

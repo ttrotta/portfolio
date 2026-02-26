@@ -9,7 +9,11 @@ import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function AboutMe() {
+export default function AboutMe({
+  dict,
+}: {
+  dict: { title: string; p1: string; p2: string; p3: string };
+}) {
   const container = useRef<HTMLElement>(null);
 
   const buildAnimations = useCallback(() => {
@@ -133,20 +137,13 @@ export default function AboutMe() {
     >
       <div className="mx-auto max-w-7xl px-6 md:px-2">
         <h2 className="about-title font-heading mb-24 text-4xl font-bold text-white md:text-7xl">
-          About me
+          {dict.title}
         </h2>
 
         <div className="space-y-16 md:space-y-6">
           <div className="about-block grid items-center justify-center gap-10 md:grid-cols-[1.4fr_1fr] md:gap-0">
             <div className="text-xl leading-relaxed text-neutral-300 md:text-2xl">
-              <p>
-                My name is Thiago Trotta and I&apos;m from Argentina. I got into
-                programming and the IT world when I was 16, and I quickly
-                realized it was something I genuinely enjoyed and wanted to
-                pursue seriously. That&apos;s why I&apos;m currently in my fifth
-                year studying Software Engineering and working on personal
-                projects in my free time.
-              </p>
+              <p>{dict.p1}</p>
             </div>
             <div className="hidden justify-center md:flex">
               <div
@@ -180,25 +177,12 @@ export default function AboutMe() {
               </div>
             </div>
             <div className="order-1 text-xl leading-relaxed text-neutral-300 md:order-2 md:text-2xl md:leading-relaxed">
-              <p>
-                I have a Full Stack profile, enjoying both frontend and backend
-                development, with a stronger inclination toward backend systems.
-                I believe that mastering AI-driven tools is becoming fundamental
-                for engineers today, so I focus on continuously improving my
-                understanding of requirements, software architecture, and
-                security best practices.
-              </p>
+              <p>{dict.p2}</p>
             </div>
           </div>
 
           <div className="about-block order-2 mx-auto mt-15 max-w-4xl text-left text-xl leading-relaxed text-neutral-300 md:order-1 md:text-center md:text-2xl">
-            <p>
-              I enjoy collaborating with others and exchanging ideas, as I
-              believe communication and soft skills are key in today&apos;s tech
-              industry. That&apos;s what motivated me to work as a teaching
-              assistant during college, and I&apos;m excited about being part of
-              a team where I can continue learning and contributing.
-            </p>
+            <p>{dict.p3}</p>
           </div>
         </div>
       </div>

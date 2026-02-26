@@ -4,7 +4,19 @@ import { useActionState, useEffect, useRef } from "react";
 import { submitContact } from "@/app/actions/contact";
 import { HiMail } from "react-icons/hi";
 
-export default function ContactForm() {
+export default function ContactForm({
+  dict,
+}: {
+  dict: {
+    messageSent: string;
+    sendAnother: string;
+    namePlaceholder: string;
+    emailPlaceholder: string;
+    messagePlaceholder: string;
+    sending: string;
+    sendMessage: string;
+  };
+}) {
   const [state, formAction, isPending] = useActionState(submitContact, {});
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -33,14 +45,14 @@ export default function ContactForm() {
           </svg>
         </div>
         <h3 className="font-heading text-2xl font-bold text-white">
-          Message Sent!
+          {dict.messageSent}
         </h3>
         <p className="font-body text-neutral-400">{state.message}</p>
         <button
           onClick={() => window.location.reload()}
           className="font-body mt-4 text-sm text-neutral-500 underline hover:text-white"
         >
-          Send another message
+          {dict.sendAnother}
         </button>
       </div>
     );
@@ -56,7 +68,7 @@ export default function ContactForm() {
         <input
           type="text"
           name="name"
-          placeholder="Name"
+          placeholder={dict.namePlaceholder}
           required
           disabled={isPending}
           className="font-body w-full rounded-2xl border border-neutral-800 bg-neutral-900/60 px-6 py-4 text-white placeholder-neutral-500 backdrop-blur-sm transition-all outline-none focus:border-neutral-500 focus:bg-neutral-800/80 disabled:opacity-50"
@@ -72,7 +84,7 @@ export default function ContactForm() {
         <input
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder={dict.emailPlaceholder}
           required
           disabled={isPending}
           className="font-body w-full rounded-2xl border border-neutral-800 bg-neutral-900/60 px-6 py-4 text-white placeholder-neutral-500 backdrop-blur-sm transition-all outline-none focus:border-neutral-500 focus:bg-neutral-800/80 disabled:opacity-50"
@@ -87,7 +99,7 @@ export default function ContactForm() {
       <div>
         <textarea
           name="message"
-          placeholder="Your message..."
+          placeholder={dict.messagePlaceholder}
           required
           disabled={isPending}
           rows={4}
@@ -108,12 +120,12 @@ export default function ContactForm() {
         {isPending ? (
           <span className="flex items-center gap-2">
             <span className="h-5 w-5 animate-spin rounded-full border-2 border-black border-t-transparent"></span>
-            Sending...
+            {dict.sending}
           </span>
         ) : (
           <>
             <HiMail className="h-6 w-6" />
-            Send Message
+            {dict.sendMessage}
           </>
         )}
       </button>

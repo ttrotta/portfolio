@@ -20,7 +20,11 @@ const CABLE_D = [
   "C 1200 1470, 1250 1560, 1400 1600",
 ].join(" ");
 
-export default function TechStack() {
+export default function TechStack({
+  dict,
+}: {
+  dict: { title: string; preferred: string };
+}) {
   const sectionRef = useRef<HTMLElement>(null);
   const energyPathRef = useRef<SVGPathElement>(null);
 
@@ -76,7 +80,7 @@ export default function TechStack() {
     <section
       id="tech-stack"
       ref={sectionRef}
-      className="relative z-10 w-full overflow-hidden py-12 md:mt-20 md:py-48 md:py-80 lg:py-128"
+      className="relative z-10 w-full overflow-hidden py-12 md:mt-20 md:py-80 lg:py-128"
     >
       <svg
         className="pointer-events-none absolute top-0 left-0 z-0 hidden h-full w-full filter-[drop-shadow(0_0_12px_rgba(225,219,65,0.4))] will-change-transform md:block"
@@ -107,10 +111,10 @@ export default function TechStack() {
       <div className="relative z-10 mx-auto max-w-2xl px-6 md:max-w-6xl md:px-12 lg:max-w-350">
         <div className="mb-16 text-center md:mb-24 lg:mb-32">
           <p className="font-michroma mb-4 text-[0.6rem] tracking-[0.3em] text-neutral-400 uppercase md:text-xs">
-            My preferred
+            {dict.preferred}
           </p>
           <h2 className="font-heading text-4xl font-bold text-white md:text-7xl lg:text-8xl">
-            Tech Stack
+            {dict.title}
           </h2>
         </div>
 

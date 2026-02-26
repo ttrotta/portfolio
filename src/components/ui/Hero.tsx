@@ -8,7 +8,7 @@ import gsap from "gsap";
 import SplitText from "gsap/src/SplitText";
 import { usePreloader } from "@/contexts/PreloaderContext";
 
-export default function Hero() {
+export default function Hero({ dict }: { dict: { softwareEngineer: string } }) {
   const { isReady } = usePreloader();
 
   useGSAP(
@@ -63,7 +63,7 @@ export default function Hero() {
           <span className="text-gray-600">TROTTA</span>
         </h1>
         <p className="font-heading job-title pointer-events-auto mt-6 text-xl sm:text-2xl md:text-xl lg:text-2xl">
-          Software Engineer
+          {dict.softwareEngineer}
         </p>
 
         <div className="mt-10 flex gap-10">
@@ -98,8 +98,13 @@ export default function Hero() {
             <HiDownload className="hero-logo h-7.5 w-7.5" aria-hidden="true" />
           </a>
         </div>
+      </div>
 
-        <ScrollIndicator />
+      <div className="absolute right-10 bottom-10 left-10 flex justify-between md:right-24 md:bottom-20 md:left-24">
+        <div className="flex flex-col items-start gap-2">
+          <ScrollIndicator />
+        </div>
+        <div className="hidden flex-col items-end gap-2 md:flex"></div>
       </div>
     </section>
   );

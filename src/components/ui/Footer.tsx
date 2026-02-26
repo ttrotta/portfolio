@@ -9,7 +9,25 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP, SplitText);
 
-export default function Footer() {
+export default function Footer({
+  dict,
+}: {
+  dict: {
+    getInTouch: string;
+    title: string;
+    viewSource: string;
+    licensedUnder: string;
+    contactForm: {
+      messageSent: string;
+      sendAnother: string;
+      namePlaceholder: string;
+      emailPlaceholder: string;
+      messagePlaceholder: string;
+      sending: string;
+      sendMessage: string;
+    };
+  };
+}) {
   const container = useRef<HTMLElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
 
@@ -53,16 +71,16 @@ export default function Footer() {
     <footer id="footer" ref={container} className="relative z-20 w-full">
       <div className="flex flex-col items-center justify-center px-6 pb-16">
         <p className="font-body mb-3 text-sm tracking-widest text-neutral-500 uppercase">
-          Get in touch
+          {dict.getInTouch}
         </p>
         <h2
           ref={textRef}
           className="font-heading mb-10 text-center text-4xl font-bold text-white md:text-6xl"
         >
-          Contact Me
+          {dict.title}
         </h2>
 
-        <ContactForm />
+        <ContactForm dict={dict.contactForm} />
 
         <div className="mt-10 flex gap-8">
           <a
@@ -95,7 +113,7 @@ export default function Footer() {
           &copy; {new Date().getFullYear()} Thiago Trotta.
         </p>
         <p className="text-xs">
-          View the source code on{" "}
+          {dict.viewSource}{" "}
           <a
             href="https://github.com/ttrotta/portfolio"
             target="_blank"
@@ -114,7 +132,7 @@ export default function Footer() {
           >
             &quot;Lightbulb&quot;
           </a>{" "}
-          3D model by Autaritus, licensed under{" "}
+          3D model by Autaritus, {dict.licensedUnder}{" "}
           <a
             href="http://creativecommons.org/licenses/by/4.0/"
             target="_blank"
