@@ -1,0 +1,59 @@
+{
+  "hero": {
+    "softwareEngineer": "Ingeniero en Sistemas"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "p1": "Mi nombre es Thiago Trotta y soy de Argentina. Me introduje en el mundo de la programación y la informática a los 16 años, y rápidamente me di cuenta de que era algo que realmente disfrutaba y quería seguir seriamente. Es por eso que actualmente estoy en mi quinto año estudiando Ingeniería en Sistemas y trabajando en proyectos personales en mi tiempo libre.",
+    "p2": "Tengo un perfil Full Stack, disfrutando tanto del desarrollo frontend como backend, con una inclinación más fuerte hacia los sistemas backend. Creo que dominar las herramientas impulsadas por IA se está convirtiendo en algo fundamental para los ingenieros hoy en día, así que me concentro en mejorar continuamente mi comprensión de los requisitos, la arquitectura de software y las mejores prácticas de seguridad.",
+    "p3": "Disfruto colaborando con otros e intercambiando ideas, ya que creo que la comunicación y las habilidades blandas son clave en la industria tecnológica actual. Eso fue lo que me motivó a trabajar como ayudante de docencia durante la universidad, y me emociona la idea de ser parte de un equipo donde pueda seguir aprendiendo y aportando."
+  },
+  "experience": {
+    "title": "Experiencia",
+    "teachingAssistantModeling": "Ayudante de Docencia en Modelos de Software",
+    "teachingAssistantFormalMethods": "Ayudante de Docencia en Métodos Formales",
+    "uns": "Universidad Nacional del Sur"
+  },
+  "education": {
+    "title": "Educación",
+    "softwareEngineering": "Ingeniería en Sistemas de Información",
+    "unsDcic": "Universidad Nacional del Sur - DCIC",
+    "pres": "PRES.",
+    "outsideClassroom": "Fuera del Aula",
+    "outsideClassroomDesc": "Dedico mi tiempo a proyectos personales, explorando constantemente nuevas tecnologías y adaptándome a la rápida evolución de la IA.",
+    "always": "SIEMPRE"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "scrollHint": "¡Desliza el carrusel!",
+    "visitGithub": "¡Visita mi",
+    "toSeeAll": "para ver todos mis proyectos!"
+  },
+  "techStack": {
+    "preferred": "Mi preferencia de",
+    "title": "Tecnologías"
+  },
+  "contactForm": {
+    "messageSent": "¡Mensaje Enviado!",
+    "sendAnother": "Enviar otro mensaje",
+    "namePlaceholder": "Nombre",
+    "emailPlaceholder": "Correo Electrónico",
+    "messagePlaceholder": "Tu mensaje...",
+    "sending": "Enviando...",
+    "sendMessage": "Enviar Mensaje"
+  },
+  "footer": {
+    "getInTouch": "Ponte en contacto",
+    "title": "Contáctame",
+    "viewSource": "Mira el código fuente en",
+    "licensedUnder": "bajo licencia"
+  },
+  "navbar": {
+    "sections": "Secciones"
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "description": "La página que buscas no existe o ha sido movida.",
+    "button": "Volver al Inicio"
+  }
+}

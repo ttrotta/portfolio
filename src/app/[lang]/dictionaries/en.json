@@ -1,0 +1,59 @@
+{
+  "hero": {
+    "softwareEngineer": "Software Engineer"
+  },
+  "about": {
+    "title": "About me",
+    "p1": "My name is Thiago Trotta and I'm from Argentina. I got into programming and the IT world when I was 16, and I quickly realized it was something I genuinely enjoyed and wanted to pursue seriously. That's why I'm currently in my fifth year studying Software Engineering and working on personal projects in my free time.",
+    "p2": "I have a Full Stack profile, enjoying both frontend and backend development, with a stronger inclination toward backend systems. I believe that mastering AI-driven tools is becoming fundamental for engineers today, so I focus on continuously improving my understanding of requirements, software architecture, and security best practices.",
+    "p3": "I enjoy collaborating with others and exchanging ideas, as I believe communication and soft skills are key in today's tech industry. That's what motivated me to work as a teaching assistant during college, and I'm excited about being part of a team where I can continue learning and contributing."
+  },
+  "experience": {
+    "title": "Experience",
+    "teachingAssistantModeling": "Teaching Assistant in Software Modeling",
+    "teachingAssistantFormalMethods": "Teaching Assistant in Formal Methods",
+    "uns": "Universidad Nacional del Sur"
+  },
+  "education": {
+    "title": "Education",
+    "softwareEngineering": "Software Engineering",
+    "unsDcic": "Universidad Nacional del Sur - DCIC",
+    "pres": "PRES.",
+    "outsideClassroom": "Outside the Classroom",
+    "outsideClassroomDesc": "I dedicate my time to personal projects, constantly exploring new technologies and adapting to the rapid evolution of AI.",
+    "always": "ALWAYS"
+  },
+  "projects": {
+    "title": "Projects",
+    "scrollHint": "Scroll the carousel!",
+    "visitGithub": "Visit my",
+    "toSeeAll": "to see all my projects!"
+  },
+  "techStack": {
+    "preferred": "My preferred",
+    "title": "Tech Stack"
+  },
+  "contactForm": {
+    "messageSent": "Message Sent!",
+    "sendAnother": "Send another message",
+    "namePlaceholder": "Name",
+    "emailPlaceholder": "Email",
+    "messagePlaceholder": "Your message...",
+    "sending": "Sending...",
+    "sendMessage": "Send Message"
+  },
+  "footer": {
+    "getInTouch": "Get in touch",
+    "title": "Contact Me",
+    "viewSource": "View the source code on",
+    "licensedUnder": "licensed under"
+  },
+  "navbar": {
+    "sections": "Sections"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "The page you are looking for doesn't exist or has been moved.",
+    "button": "Back to Home"
+  }
+}
