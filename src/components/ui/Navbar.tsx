@@ -208,9 +208,9 @@ export default function Navbar({
         </a>
 
         <div className="relative z-110 flex items-center gap-6 md:gap-8">
-          <div className="font-michroma group flex items-center gap-1.5 text-[0.65rem] tracking-[0.25em] text-neutral-400 uppercase transition-colors duration-300 hover:text-white">
+          <div className="font-michroma group flex items-center gap-1.5 text-[0.65rem] tracking-[0.2em] text-neutral-400 uppercase transition-colors duration-300 hover:text-white">
             <Link
-              href="/en"
+              href={pathname ? pathname.replace(`/${lang}`, "/en") : "/en"}
               className={
                 lang === "en"
                   ? "text-white"
@@ -221,7 +221,7 @@ export default function Navbar({
             </Link>
             <span className="text-neutral-600">/</span>
             <Link
-              href="/es"
+              href={pathname ? pathname.replace(`/${lang}`, "/es") : "/es"}
               className={
                 lang === "es"
                   ? "text-white"
