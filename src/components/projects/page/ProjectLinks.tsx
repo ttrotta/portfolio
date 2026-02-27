@@ -1,12 +1,18 @@
 import { Project } from "../../../data/projectsData";
 import { FiArrowDown } from "react-icons/fi";
+import { ProjectPageDictionary } from "./ProjectPage";
 
 interface ProjectLinksProps {
   repoUrl?: Project["repoUrl"];
   liveUrl?: Project["liveUrl"];
+  dict: ProjectPageDictionary;
 }
 
-export default function ProjectLinks({ repoUrl, liveUrl }: ProjectLinksProps) {
+export default function ProjectLinks({
+  repoUrl,
+  liveUrl,
+  dict,
+}: ProjectLinksProps) {
   if (!repoUrl && !liveUrl) return null;
 
   return (
@@ -19,7 +25,7 @@ export default function ProjectLinks({ repoUrl, liveUrl }: ProjectLinksProps) {
             rel="noreferrer"
             className="proj-link"
           >
-            Repository
+            {dict.repository}
             <FiArrowDown className="arrow" />
           </a>
         )}
@@ -30,7 +36,7 @@ export default function ProjectLinks({ repoUrl, liveUrl }: ProjectLinksProps) {
             rel="noreferrer"
             className="proj-link"
           >
-            Website
+            {dict.website}
             <FiArrowDown className="arrow rotate-225" />
           </a>
         )}

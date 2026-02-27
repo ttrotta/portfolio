@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useEffect } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import { MdPlayArrow } from "react-icons/md";
+import { ProjectPageDictionary } from "./ProjectPage";
 
 interface ImageLightboxProps {
   images: string[];
@@ -10,6 +11,7 @@ interface ImageLightboxProps {
   onClose: () => void;
   onNext: () => void;
   onPrev: () => void;
+  dict: ProjectPageDictionary;
 }
 
 export default function ImageLightbox({
@@ -19,6 +21,7 @@ export default function ImageLightbox({
   onClose,
   onNext,
   onPrev,
+  dict,
 }: ImageLightboxProps) {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -51,7 +54,7 @@ export default function ImageLightbox({
       <div className="relative h-[85vh] w-[85vw]">
         <Image
           src={images[currentIndex]}
-          alt={`Imagen ${currentIndex + 1} en pantalla completa`}
+          alt={`${dict.image} ${currentIndex + 1} ${dict.fullscreen}`}
           fill
           style={{ objectFit: "contain" }}
           className="select-none"

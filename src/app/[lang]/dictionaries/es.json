@@ -29,6 +29,42 @@
     "visitGithub": "¡Visita mi",
     "toSeeAll": "para ver todos mis proyectos!"
   },
+  "projectPage": {
+    "backToProjects": "Volver a proyectos",
+    "image": "Imagen",
+    "of": "de",
+    "fullscreen": "en pantalla completa",
+    "prev": "Anterior",
+    "next": "Siguiente",
+    "repository": "Repositorio",
+    "website": "Sitio Web"
+  },
+  "projectsData": {
+    "study-sessions": {
+      "title": "Study Sessions",
+      "description": "Study Sessions es una plataforma de productividad diseñada para optimizar el flujo de trabajo académico. Usando una arquitectura monorepo (Node.js/React), la aplicación integra un temporizador Pomodoro, gestión de tareas (ToDo), notas dinámicas y una conexión directa a la API de Spotify para ambientar las sesiones. Está enfocada en ofrecer una experiencia de usuario fluida y reactiva para manejar múltiples materias en tiempo real."
+    },
+    "sky-reach": {
+      "title": "Sky Reach",
+      "description": "Sky Reach es una plataforma de comercio electrónico de drones de próxima generación que integra herramientas inteligentes para pilotos. Desarrollada con Next.js 15 y PostgreSQL, la plataforma ofrece desde un sistema de pagos con MercadoPago hasta un asistente virtual de IA (Gemini) y pronósticos del clima en tiempo real para asegurar vuelos seguros."
+    },
+    "new-project": {
+      "title": "Proyecto en Desarrollo",
+      "description": "Este proyecto se encuentra actualmente en la fase conceptual y de desarrollo inicial. Estoy refinando la lógica central y la arquitectura, por lo que aunque no hay una vista previa tangible todavía, representa un paso significativo en mi viaje de aprendizaje. ¡Mantente al tanto!"
+    },
+    "study-sessions-2": {
+      "title": "Study Sessions",
+      "description": "Study Sessions es una plataforma de productividad diseñada para optimizar el flujo de trabajo académico. Usando una arquitectura monorepo (Node.js/React), la aplicación integra un temporizador Pomodoro, gestión de tareas (ToDo), notas dinámicas y una conexión directa a la API de Spotify para ambientar las sesiones. Está enfocada en ofrecer una experiencia de usuario fluida y reactiva para manejar múltiples materias en tiempo real."
+    },
+    "sky-reach-2": {
+      "title": "Sky Reach",
+      "description": "Sky Reach es una plataforma de comercio electrónico de drones de próxima generación que integra herramientas inteligentes para pilotos. Desarrollada con Next.js 15 y PostgreSQL, la plataforma ofrece desde un sistema de pagos con MercadoPago hasta un asistente virtual de IA (Gemini) y pronósticos del clima en tiempo real para asegurar vuelos seguros."
+    },
+    "new-project-2": {
+      "title": "Proyecto en Desarrollo",
+      "description": "Este es un próximo proyecto en el que estoy explorando nuevas tecnologías y patrones de implementación. Actualmente está en desarrollo sin una versión pública todavía, enfocándose en solidificar las bases antes de la primera versión."
+    }
+  },
   "techStack": {
     "preferred": "Mi preferencia de",
     "title": "Tecnologías"
