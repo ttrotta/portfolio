@@ -28,12 +28,45 @@ export default function TextColumn({
       <div className="relative">
         <h2
           ref={titleRef}
-          className="ml-2 text-4xl font-bold tracking-tight text-white perspective-[400px] sm:ml-0 sm:text-5xl lg:text-7xl"
+          className="font-heading ml-2 flex flex-col items-start text-4xl font-bold tracking-tight text-white perspective-[400px] sm:ml-0 md:text-5xl lg:text-5xl"
         >
-          {
-            projectsDataDict[project.slug as keyof typeof projectsDataDict]
-              .title
-          }
+          {(() => {
+            const title =
+              projectsDataDict[project.slug as keyof typeof projectsDataDict]
+                .title;
+            const spaceIndex = title.indexOf(" ");
+
+            if (spaceIndex === -1 || title.length < 13) {
+              return (
+                <div className="w-full leading-tight lg:-translate-x-32">
+                  {spaceIndex === -1 ? (
+                    <span className="inline-block break-keep">{title}</span>
+                  ) : (
+                    <>
+                      <span className="mr-3 inline-block break-keep">
+                        {title.substring(0, spaceIndex)}
+                      </span>
+                      <span className="inline-block break-keep">
+                        {title.substring(spaceIndex + 1)}
+                      </span>
+                    </>
+                  )}
+                </div>
+              );
+            }
+
+            const firstWord = title.substring(0, spaceIndex);
+            const restOfTitle = title.substring(spaceIndex + 1);
+
+            return (
+              <div className="flex w-full flex-col gap-y-2">
+                <span className="block break-keep lg:-translate-x-32">
+                  {firstWord}
+                </span>
+                <span className="block break-keep">{restOfTitle}</span>
+              </div>
+            );
+          })()}
         </h2>
       </div>
       <p className="text-sm leading-loose text-gray-400 lg:max-w-lg">
