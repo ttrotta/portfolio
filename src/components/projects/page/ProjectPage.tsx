@@ -14,11 +14,33 @@ import { SplitText } from "gsap/SplitText";
 import TextColumn from "./TextColumn";
 import PaginationDots from "./PaginationDots";
 
-interface ProjectPageProps {
-  project: Project;
+export interface ProjectPageDictionary {
+  backToProjects: string;
+  image: string;
+  of: string;
+  fullscreen: string;
+  prev: string;
+  next: string;
+  repository: string;
+  website: string;
 }
 
-export default function ProjectPage({ project }: ProjectPageProps) {
+export type ProjectsDataDictionary = Record<
+  string,
+  { title: string; description: string }
+>;
+
+interface ProjectPageProps {
+  project: Project;
+  dict: ProjectPageDictionary;
+  projectsDataDict: ProjectsDataDictionary;
+}
+
+export default function ProjectPage({
+  project,
+  dict,
+  projectsDataDict,
+}: ProjectPageProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const textColumnRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -91,7 +113,7 @@ export default function ProjectPage({ project }: ProjectPageProps) {
   return (
     <>
       <div className="relative min-h-screen">
-        <BackButton />
+        <BackButton label={dict.backToProjects} />
 
         <div
           ref={containerRef}
@@ -106,7 +128,7 @@ export default function ProjectPage({ project }: ProjectPageProps) {
               >
                 <Image
                   src={imgSrc}
-                  alt={`Imagen ${index + 1} de ${project.title}`}
+                  alt={`${dict.image} ${index + 1} ${dict.of} ${projectsDataDict[project.slug as keyof typeof projectsDataDict].title}`}
                   fill
                   className="object-cover object-top"
                 />
@@ -119,11 +141,17 @@ export default function ProjectPage({ project }: ProjectPageProps) {
               project={project}
               textColumnRef={textColumnRef}
               titleRef={titleRef}
+              dict={dict}
+              projectsDataDict={projectsDataDict}
             />
           </div>
 
           <div className="order-3 w-full lg:hidden">
-            <PaginationDots currentId={project.id} />
+            <PaginationDots
+              currentId={project.id}
+              dict={dict}
+              projectsDataDict={projectsDataDict}
+            />
           </div>
         </div>
       </div>
@@ -135,17 +163,18 @@ export default function ProjectPage({ project }: ProjectPageProps) {
         onClose={closeLightbox}
         onNext={nextImage}
         onPrev={prevImage}
+        dict={dict}
       />
     </>
   );
 }
 
-const BackButton = () => {
+const BackButton = ({ label }: { label: string }) => {
   return (
     <button
       onClick={() => (window.location.href = "/#projects")}
       className="absolute top-31 left-2 z-50 cursor-pointer transition-colors hover:text-gray-400 sm:top-32 md:left-4 lg:fixed lg:top-35"
-      aria-label="Back to projects"
+      aria-label={label}
     >
       <FiArrowDown className="h-8 w-8 rotate-90" />
     </button>

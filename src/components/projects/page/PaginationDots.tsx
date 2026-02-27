@@ -1,11 +1,18 @@
 import { Project, projects } from "../../../data/projectsData";
 import { useTransition } from "@/contexts/TransitionContext";
+import { ProjectPageDictionary, ProjectsDataDictionary } from "./ProjectPage";
 
 interface PaginationDotsProps {
   currentId: Project["id"];
+  dict: ProjectPageDictionary;
+  projectsDataDict: ProjectsDataDictionary;
 }
 
-export default function PaginationDots({ currentId }: PaginationDotsProps) {
+export default function PaginationDots({
+  currentId,
+  dict,
+  projectsDataDict,
+}: PaginationDotsProps) {
   const { navigateWithTransition } = useTransition();
 
   const currentIndex = projects.findIndex((p) => p.id === currentId);
@@ -28,7 +35,7 @@ export default function PaginationDots({ currentId }: PaginationDotsProps) {
             onClick={() => handleNavigation(prevProject.slug, "prev")}
           >
             <span className="nav-line w-5" />
-            Prev
+            {dict.prev}
           </button>
 
           <div className="mx-3.5 flex items-center justify-center gap-5 lg:gap-4">
@@ -45,7 +52,10 @@ export default function PaginationDots({ currentId }: PaginationDotsProps) {
                 <button
                   key={p.id}
                   onClick={() => handleNavigation(p.slug, dir)}
-                  title={p.title}
+                  title={
+                    projectsDataDict[p.slug as keyof typeof projectsDataDict]
+                      .title
+                  }
                   className={`pag-bar w-1 hover:scale-y-125 lg:w-1 ${
                     isActive ? "h-8 w-1.5 bg-gray-200" : "h-3.5 bg-gray-700"
                   }`}
@@ -58,7 +68,7 @@ export default function PaginationDots({ currentId }: PaginationDotsProps) {
             className="pag-nav"
             onClick={() => handleNavigation(nextProject.slug, "next")}
           >
-            Next
+            {dict.next}
             <span className="nav-line w-5" />
           </button>
         </div>
