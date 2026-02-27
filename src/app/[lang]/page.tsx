@@ -8,7 +8,7 @@ import Background from "@/components/ui/Background";
 import AboutMe from "@/components/ui/AboutMe";
 import Logo from "@/components/ui/Logo";
 import PageWrapper from "@/components/ui/PageWrapper";
-import { getDictionary, hasLocale } from "./dictionaries";
+import { getDictionary, hasLocale } from "../../lib/dictionaries";
 import { notFound } from "next/navigation";
 
 export default async function Home({

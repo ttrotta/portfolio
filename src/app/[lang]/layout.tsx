@@ -6,13 +6,13 @@ import {
   satisfy,
   spaceGrotesk,
   michroma,
-} from "../../fonts";
+} from "../../lib/fonts";
 import type { Metadata, Viewport } from "next";
 import SmoothScroll from "@/components/SmoothScroll";
 import { CustomScroll } from "@/components/CustomScroll";
 import Navbar from "@/components/ui/Navbar";
 
-import { getDictionary } from "./dictionaries";
+import { getDictionary } from "../../lib/dictionaries";
 
 export const viewport: Viewport = {
   width: "device-width",

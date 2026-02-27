@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { projects } from "@/data/projectsData";
 import ProjectPage from "@/components/projects/page/ProjectPage";
-import { getDictionary, Locale } from "../../dictionaries";
+import { getDictionary, Locale } from "../../../../lib/dictionaries";
 
 export default async function ProjectsPage({
   params,

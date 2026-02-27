@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useRef } from "react";
-import { submitContact } from "@/app/actions/contact";
+import { submitContact } from "@/actions/contact";
 import { HiMail } from "react-icons/hi";
 
 export default function ContactForm({
