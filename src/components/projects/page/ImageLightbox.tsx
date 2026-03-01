@@ -11,6 +11,7 @@ interface ImageLightboxProps {
   onClose: () => void;
   onNext: () => void;
   onPrev: () => void;
+  onSelect: (index: number) => void;
   dict: ProjectPageDictionary;
 }
 
@@ -21,6 +22,7 @@ export default function ImageLightbox({
   onClose,
   onNext,
   onPrev,
+  onSelect,
   dict,
 }: ImageLightboxProps) {
   useEffect(() => {
@@ -46,12 +48,12 @@ export default function ImageLightbox({
 
       <button
         onClick={onPrev}
-        className="absolute left-8 z-120 text-white hover:text-gray-400"
+        className="absolute left-4 z-120 text-white hover:text-gray-400 sm:left-8"
       >
-        <MdPlayArrow className="h-16 w-16 rotate-180" />
+        <MdPlayArrow className="h-12 w-12 rotate-180 sm:h-16 sm:w-16" />
       </button>
 
-      <div className="relative h-[85vh] w-[85vw]">
+      <div className="relative flex h-[70vh] w-[90vw] flex-col items-center justify-center sm:h-[80vh] sm:w-[85vw]">
         <Image
           src={images[currentIndex]}
           alt={`${dict.image} ${currentIndex + 1} ${dict.fullscreen}`}
@@ -63,10 +65,31 @@ export default function ImageLightbox({
 
       <button
         onClick={onNext}
-        className="absolute right-8 z-120 text-white hover:text-gray-400"
+        className="absolute right-4 z-120 text-white hover:text-gray-400 sm:right-8"
       >
-        <MdPlayArrow className="h-16 w-16" />
+        <MdPlayArrow className="h-12 w-12 sm:h-16 sm:w-16" />
       </button>
+
+      <div className="no-scrollbar absolute right-0 bottom-4 left-0 z-120 flex justify-center gap-2 overflow-x-auto px-4 py-2 sm:bottom-8 sm:gap-4">
+        {images.map((imgSrc, index) => (
+          <button
+            key={index}
+            onClick={() => onSelect(index)}
+            className={`relative h-12 w-16 shrink-0 overflow-hidden rounded-md border-2 transition-all sm:h-16 sm:w-24 ${
+              currentIndex === index
+                ? "scale-110 border-white opacity-100"
+                : "border-transparent opacity-50 hover:opacity-80"
+            }`}
+          >
+            <Image
+              src={imgSrc}
+              alt={`${dict.image} thumbnail ${index + 1}`}
+              fill
+              className="object-cover"
+            />
+          </button>
+        ))}
+      </div>
     </div>
   );
 }

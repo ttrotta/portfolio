@@ -23,6 +23,7 @@ export interface ProjectPageDictionary {
   next: string;
   repository: string;
   website: string;
+  loadMore: string;
 }
 
 export type ProjectsDataDictionary = Record<
@@ -47,6 +48,7 @@ export default function ProjectPage({
 
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [showAllImagesMobile, setShowAllImagesMobile] = useState(false);
 
   useGSAP(
     () => {
@@ -120,20 +122,35 @@ export default function ProjectPage({
           className="mx-auto flex w-full max-w-[85vw] flex-col items-start justify-center gap-12 pt-30 pb-16 lg:flex-row lg:gap-16 2xl:max-w-350"
         >
           <div className="order-2 flex w-full flex-col gap-12 lg:order-1 lg:w-3/5">
-            {project.images.slice(1).map((imgSrc, index) => (
-              <div
-                key={index}
-                onClick={() => openLightbox(index)}
-                className="gsap-scroll-img relative h-[50vh] w-full cursor-pointer overflow-hidden rounded-xl bg-gray-900 shadow-2xl transition-transform duration-500 hover:scale-[0.98] sm:h-[60vh] lg:h-[65vh]"
+            {project.images.slice(1).map((imgSrc, index) => {
+              const isHiddenOnMobile = !showAllImagesMobile && index >= 2;
+
+              return (
+                <div
+                  key={index}
+                  onClick={() => openLightbox(index + 1)}
+                  className={`gsap-scroll-img relative h-[50vh] w-full cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-gray-900 shadow-[0_0_15px_rgba(255,255,255,0.07)] transition-transform duration-500 hover:scale-[0.98] sm:h-[60vh] lg:h-[65vh] ${
+                    isHiddenOnMobile ? "hidden lg:block" : "block"
+                  }`}
+                >
+                  <Image
+                    src={imgSrc}
+                    alt={`${dict.image} ${index + 1} ${dict.of} ${projectsDataDict[project.slug as keyof typeof projectsDataDict].title}`}
+                    fill
+                    className="object-cover object-top"
+                  />
+                </div>
+              );
+            })}
+
+            {!showAllImagesMobile && project.images.length > 3 && (
+              <button
+                onClick={() => setShowAllImagesMobile(true)}
+                className="mx-auto mt-2 rounded-full border border-white/20 px-8 py-2.5 text-sm font-medium tracking-wide text-gray-300 transition-colors hover:bg-white/10 hover:text-white lg:hidden"
               >
-                <Image
-                  src={imgSrc}
-                  alt={`${dict.image} ${index + 1} ${dict.of} ${projectsDataDict[project.slug as keyof typeof projectsDataDict].title}`}
-                  fill
-                  className="object-cover object-top"
-                />
-              </div>
-            ))}
+                {dict.loadMore}
+              </button>
+            )}
           </div>
 
           <div className="order-1 w-full lg:sticky lg:top-32 lg:order-2 lg:h-fit lg:w-2/5">
@@ -163,6 +180,7 @@ export default function ProjectPage({
         onClose={closeLightbox}
         onNext={nextImage}
         onPrev={prevImage}
+        onSelect={(index: number) => setLightboxIndex(index)}
         dict={dict}
       />
     </>

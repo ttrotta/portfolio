@@ -37,7 +37,8 @@
     "prev": "Anterior",
     "next": "Siguiente",
     "repository": "Repositorio",
-    "website": "Sitio Web"
+    "website": "Sitio Web",
+    "loadMore": "Cargar más"
   },
   "projectsData": {
     "study-sessions": {

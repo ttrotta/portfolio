@@ -37,7 +37,8 @@
     "prev": "Prev",
     "next": "Next",
     "repository": "Repository",
-    "website": "Website"
+    "website": "Website",
+    "loadMore": "Load more"
   },
   "projectsData": {
     "study-sessions": {
