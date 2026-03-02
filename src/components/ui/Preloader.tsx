@@ -4,7 +4,13 @@ import { useEffect, useState, useRef } from "react";
 import { useProgress } from "@react-three/drei";
 import gsap from "gsap";
 
-export default function Preloader({ onComplete }: { onComplete: () => void }) {
+export default function Preloader({
+  onComplete,
+  dict,
+}: {
+  onComplete: () => void;
+  dict?: { clickSwitch: string };
+}) {
   const { progress } = useProgress();
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSwitchedOn, setIsSwitchedOn] = useState(false);
@@ -65,7 +71,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
     <div
       ref={overlayRef}
       className={`fixed inset-0 z-9999 flex flex-col items-center justify-center bg-neutral-950 text-white transition-colors duration-700 ${
-        isLoaded ? "cursor-pointer" : "cursor-wait"
+        isLoaded ? "cursor-pointer" : ""
       }`}
       onClick={handleSwitchClick}
     >
@@ -117,7 +123,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
           <p
             className={`font-inter mt-4 text-sm tracking-wide transition-opacity duration-500 ${isLoaded ? "text-neutral-500 opacity-100" : "text-neutral-600 opacity-0"}`}
           >
-            Click the switch to turn on the lights
+            {dict?.clickSwitch || "Click the switch to turn on the lights"}
           </p>
         </div>
       </div>

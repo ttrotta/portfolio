@@ -24,7 +24,7 @@ export default async function Home({
 
   return (
     <main className="flex min-h-screen w-full flex-col">
-      <PageWrapper>
+      <PageWrapper dict={dict.preloader}>
         <Background />
         <Hero dict={dict.hero} />
         <Experience dict={dict.experience} />

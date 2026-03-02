@@ -4,7 +4,13 @@ import { useEffect } from "react";
 import Preloader from "./Preloader";
 import { usePreloader, PreloaderProvider } from "@/contexts/PreloaderContext";
 
-function PageContent({ children }: { children: React.ReactNode }) {
+function PageContent({
+  children,
+  dict,
+}: {
+  children: React.ReactNode;
+  dict?: { clickSwitch: string };
+}) {
   const { isReady, setIsReady } = usePreloader();
 
   useEffect(() => {
@@ -29,19 +35,23 @@ function PageContent({ children }: { children: React.ReactNode }) {
         {children}
       </div>
 
-      {!isReady && <Preloader onComplete={() => setIsReady(true)} />}
+      {!isReady && (
+        <Preloader onComplete={() => setIsReady(true)} dict={dict} />
+      )}
     </>
   );
 }
 
 export default function PageWrapper({
   children,
+  dict,
 }: {
   children: React.ReactNode;
+  dict?: { clickSwitch: string };
 }) {
   return (
     <PreloaderProvider>
-      <PageContent>{children}</PageContent>
+      <PageContent dict={dict}>{children}</PageContent>
     </PreloaderProvider>
   );
 }

@@ -97,6 +97,9 @@
       "contact": "CONTACTO"
     }
   },
+  "preloader": {
+    "clickSwitch": "Haz clic en el interruptor para encender las luces"
+  },
   "notFound": {
     "title": "Página no encontrada",
     "description": "La página que buscas no existe o ha sido movida.",
