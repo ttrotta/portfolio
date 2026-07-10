@@ -7,9 +7,12 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SplitText from "gsap/src/SplitText";
 import { usePreloader } from "@/contexts/PreloaderContext";
+import { useParams } from "next/navigation";
 
 export default function Hero({ dict }: { dict: { softwareEngineer: string } }) {
   const { isReady } = usePreloader();
+  const params = useParams();
+  const isSpanish = params?.lang === "es";
 
   useGSAP(
     () => {
@@ -88,8 +91,8 @@ export default function Hero({ dict }: { dict: { softwareEngineer: string } }) {
           </a>
 
           <a
-            href="/cv-thiago-trotta.pdf"
-            download="CV_Thiago_Trotta.pdf"
+            href={isSpanish ? "/cv-thiago-trotta-es.pdf" : "/cv-thiago-trotta-en.pdf"}
+            download={isSpanish ? "CV_Thiago_Trotta_ES.pdf" : "CV_Thiago_Trotta_EN.pdf"}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Download CV"
