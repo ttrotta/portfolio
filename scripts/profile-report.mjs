@@ -37,6 +37,9 @@ if (!files.length) {
       console.log(
         `    DPR=${route.device.devicePixelRatio} | canvas=${route.canvasCount} | WebGL=${route.webgl.available ? (route.webgl.renderer ?? "available") : `unavailable (${route.webgl.reason})`} | duplicate URLs=${route.requests.duplicateUrls.length}`,
       );
+      console.log(
+        `    HDR requests: external=${route.requests.environment.externalHdrRequestCount} | local same-origin=${route.requests.environment.localHdrRequestCount}`,
+      );
       if (route.requests.duplicateUrls.length)
         console.log(
           `    duplicates: ${route.requests.duplicateUrls.join(" | ")}`,

@@ -13,6 +13,10 @@ type RouteMetrics = {
     total: number;
     byResourceType: Record<string, number>;
     duplicateUrls: string[];
+    environment: {
+      externalHdrRequestCount: number;
+      localHdrRequestCount: number;
+    };
   };
   longTasks: Array<{ startTime: number; duration: number }>;
   longTaskMaxMs: number | null;
@@ -222,6 +226,19 @@ async function measureRoute(
     .filter(([, count]) => count > 1)
     .map(([url, count]) => `${count}x ${url}`)
     .sort();
+  const pageOrigin = new URL(page.url()).origin;
+  const externalHdrRequestCount = requests.filter(({ url }) =>
+    ["raw.githubusercontent.com", "raw.githack.com"].includes(
+      new URL(url).hostname,
+    ),
+  ).length;
+  const localHdrRequestCount = requests.filter(({ url }) => {
+    const parsed = new URL(url);
+    return (
+      parsed.origin === pageOrigin &&
+      parsed.pathname === "/models/dikhololo_night_1k.hdr"
+    );
+  }).length;
   return {
     ...(metrics as Omit<
       RouteMetrics,
@@ -230,7 +247,12 @@ async function measureRoute(
     route,
     phase,
     serverStatus: response?.status() ?? null,
-    requests: { total: requests.length, byResourceType, duplicateUrls },
+    requests: {
+      total: requests.length,
+      byResourceType,
+      duplicateUrls,
+      environment: { externalHdrRequestCount, localHdrRequestCount },
+    },
   } satisfies RouteMetrics;
 }
 
@@ -315,9 +337,13 @@ test("profile desktop and emulated-mobile portfolio journeys", async ({
 
   for (const locale of ["en", "es"]) {
     const collectHomeBrowserMetrics = locale === "en";
-    routeMetrics.push(
-      await measureRoute(page, `/${locale}`, "cold", collectHomeBrowserMetrics),
+    const coldHome = await measureRoute(
+      page,
+      `/${locale}`,
+      "cold",
+      collectHomeBrowserMetrics,
     );
+    routeMetrics.push(coldHome);
     await page.close();
     page = await context.newPage();
     const warmHome = await measureRoute(
@@ -337,6 +363,20 @@ test("profile desktop and emulated-mobile portfolio journeys", async ({
     diagnostics.push(
       `${locale}: pagination DOM selectors exist, but animated transition clicks are excluded from isolated navigation evidence`,
     );
+    expect(
+      coldHome.requests.environment.externalHdrRequestCount,
+      `${locale}: external HDR requests must remain self-hosted`,
+    ).toBe(0);
+    if (locale === "en") {
+      expect(
+        coldHome.requests.environment.localHdrRequestCount,
+        `${locale}: cold navigation must request the local HDR from the same origin`,
+      ).toBeGreaterThanOrEqual(1);
+    }
+    expect(
+      warmHome.requests.environment.externalHdrRequestCount,
+      `${locale}: warm navigation must not request an external HDR`,
+    ).toBe(0);
 
     const projectRoute = `/${locale}/projects/${projects[0]}`;
     const coldProjectPage = await context.newPage();
