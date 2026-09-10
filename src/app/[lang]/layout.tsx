@@ -42,8 +42,10 @@ export default async function RootLayout({
         className={"bg-background font-body text-texting antialiased"}
       >
         <Navbar lang={lang} dict={dict.navbar} />
-        <CustomScroll key={lang} />
-        <SmoothScroll key={lang}>{children}</SmoothScroll>
+        <CustomScroll key={`custom-scroll-${lang}`} />
+        <SmoothScroll key={`smooth-scroll-${lang}`}>
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );
