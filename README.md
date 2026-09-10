@@ -18,3 +18,12 @@ Here's the main stack I used to put this together:
 - **Tailwind CSS v4** (for styling)
 - **Lenis** (for smooth scroll)
 - **TypeScript**
+
+## Playwright profiling
+
+Run the deterministic headless profile with `pnpm run profile`, then summarize it with
+`pnpm run profile:report`. Headless Chromium may report SwiftShader; that output is
+diagnostic and is not hardware-GPU evidence. To attempt headed Chromium with Windows
+Direct3D 11 ANGLE, run `$env:PROFILE_HEADLESS="false"; pnpm run profile` in
+PowerShell, then remove the variable afterward. The report labels server navigation,
+browser emulation, and the qualified GPU attempt separately.

@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "profile": "playwright test --config=playwright.config.ts",
+    "profile:report": "node scripts/profile-report.mjs"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.8.1",
@@ -27,6 +29,7 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "@tailwindcss/postcss": "^4",
     "@types/negotiator": "^0.6.4",
     "@types/node": "^20",

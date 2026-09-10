@@ -42,3 +42,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local agent tooling
+/.atl/
+/.codegraph/
+
+# Playwright profiling artifacts
+/artifacts/playwright/
