@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Environment } from "@react-three/drei";
 import Lightbulb from "../lights/Lightbulb";
@@ -26,9 +27,15 @@ export default function Background() {
       >
         <ambientLight intensity={0.1} />
         <directionalLight position={[5, 5, 5]} intensity={0.4} />
-        <Environment preset="night" />
         <Particles count={quality.particles} />
-        {quality.renderBulb && <Lightbulb />}
+        <Suspense fallback={null}>
+          <Environment files={["/models/dikhololo_night_1k.hdr"]} />
+        </Suspense>
+        {quality.renderBulb && (
+          <Suspense fallback={null}>
+            <Lightbulb />
+          </Suspense>
+        )}
       </Canvas>
     </div>
   );
