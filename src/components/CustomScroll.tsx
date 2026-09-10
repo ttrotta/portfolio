@@ -1,21 +1,18 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import { frameCoordinator } from "@/lib/performance/frameCoordinator";
 // import { FaStar } from "react-icons/fa6";
 
 export const CustomScroll = () => {
   const [progress, setProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const pendingScrollRef = useRef(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const winScroll = window.scrollY;
-      const height = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = winScroll / height;
-
-      if (winScroll > 100) setIsVisible(true);
-      setProgress(scrolled);
+      pendingScrollRef.current = true;
 
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
@@ -27,9 +24,20 @@ export const CustomScroll = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
+    const unsubscribe = frameCoordinator.subscribe(() => {
+      if (!pendingScrollRef.current) return;
+      pendingScrollRef.current = false;
+      const height = Math.max(
+        document.documentElement.scrollHeight - window.innerHeight,
+        1,
+      );
+      setProgress(window.scrollY / height);
+      if (window.scrollY > 100) setIsVisible(true);
+    });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      unsubscribe();
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }

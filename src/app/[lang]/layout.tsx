@@ -37,10 +37,13 @@ export default async function RootLayout({
       lang={lang}
       className={`${inter.variable} ${dmSans.variable} ${michroma.variable}`}
     >
-      <body className={"bg-background font-body text-texting antialiased"}>
+      <body
+        data-route-owner={lang}
+        className={"bg-background font-body text-texting antialiased"}
+      >
         <Navbar lang={lang} dict={dict.navbar} />
-        <CustomScroll />
-        <SmoothScroll>{children}</SmoothScroll>
+        <CustomScroll key={lang} />
+        <SmoothScroll key={lang}>{children}</SmoothScroll>
       </body>
     </html>
   );

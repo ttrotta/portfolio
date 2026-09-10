@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect, MouseEvent } from "react";
 import gsap from "gsap";
+import { frameCoordinator } from "@/lib/performance/frameCoordinator";
 
 export default function Logo({
   className = "",
@@ -58,8 +59,7 @@ export default function Logo({
       if (path2Ref.current)
         path2Ref.current.setAttribute("d", drawPath(points2.current));
     };
-    gsap.ticker.add(updatePaths);
-    return () => gsap.ticker.remove(updatePaths);
+    return frameCoordinator.subscribe(() => updatePaths());
   }, []);
 
   const handleMouseMove = (e: MouseEvent) => {

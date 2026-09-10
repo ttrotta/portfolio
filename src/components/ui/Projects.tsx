@@ -19,6 +19,7 @@ export default function Projects({
   const hasSnapped = useRef(false);
   const lenis = useLenis();
   const [showHint, setShowHint] = useState(false);
+  const hintTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -45,7 +46,7 @@ export default function Projects({
           });
 
           setShowHint(true);
-          setTimeout(() => {
+          hintTimer.current = setTimeout(() => {
             setShowHint(false);
           }, 6000);
         }
@@ -68,6 +69,7 @@ export default function Projects({
     return () => {
       enterObserver.disconnect();
       exitObserver.disconnect();
+      if (hintTimer.current) clearTimeout(hintTimer.current);
     };
   }, [lenis]);
 

@@ -12,7 +12,6 @@ export default function Rig(props: ThreeElements["group"]) {
     if (ref.current) {
       ref.current.rotation.y = -scroll.offset * (Math.PI * 2);
     }
-    state.events.update?.();
     easing.damp3(
       state.camera.position,
       [-state.pointer.x * 2, state.pointer.y + 1.5, 10],

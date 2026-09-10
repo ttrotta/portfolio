@@ -3,11 +3,15 @@ import { useThree } from "@react-three/fiber";
 import gsap from "gsap";
 import { RefObject } from "react";
 import { Group } from "three";
+import { useEffect, useRef } from "react";
+import { frameCoordinator } from "@/lib/performance/frameCoordinator";
 
-export function useScrollChoreography(groupRef: RefObject<Group | null>) {
+export function useScrollChoreography(
+  groupRef: RefObject<Group | null>,
+  owner = "global",
+) {
   const { viewport } = useThree();
-
-  console.log("Viewport changed:", viewport);
+  const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
   useGSAP(() => {
     if (!groupRef.current) return;
@@ -22,6 +26,7 @@ export function useScrollChoreography(groupRef: RefObject<Group | null>) {
     });
 
     tl.set(groupRef.current.position, { y: 0, x: 0 });
+    timelineRef.current = tl;
 
     tl.to(groupRef.current.position, {
       x: -viewport.width * 0.05,
@@ -58,5 +63,12 @@ export function useScrollChoreography(groupRef: RefObject<Group | null>) {
         ease: "none",
         duration: 1.3,
       });
-  }, [viewport]);
+  }, [viewport, groupRef]);
+
+  useEffect(() => {
+    return frameCoordinator.subscribe(
+      () => timelineRef.current?.scrollTrigger?.update(),
+      owner,
+    );
+  }, [owner]);
 }

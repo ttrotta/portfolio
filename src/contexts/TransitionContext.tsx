@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import gsap from "gsap";
 
@@ -28,6 +28,13 @@ export default function TransitionProvider({
   const overlayRef = useRef<HTMLDivElement>(null);
 
   const [isTransitioning, setIsTransitioning] = useState(false);
+
+  useEffect(() => {
+    const overlay = overlayRef.current;
+    return () => {
+      gsap.killTweensOf(overlay);
+    };
+  }, [pathname]);
 
   const navigateWithTransition = (url: string, dir: "next" | "prev") => {
     if (url === pathname || isTransitioning || !overlayRef.current) return;

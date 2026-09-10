@@ -1,52 +1,28 @@
 "use client";
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { useEffect, useRef } from "react";
 import { PointLight, Mesh } from "three";
+import * as THREE from "three";
+import { frameCoordinator } from "@/lib/performance/frameCoordinator";
 
-export function useLightAnimation(enabled: boolean = true) {
+export function useLightAnimation(enabled: boolean = true, owner = "global") {
   const pointLightRef = useRef<PointLight | null>(null);
   const sphereMeshRef = useRef<Mesh | null>(null);
   const glowRef = useRef<Mesh | null>(null);
 
-  useGSAP(
-    () => {
-      if (
-        !enabled ||
-        !pointLightRef.current ||
-        !sphereMeshRef.current ||
-        !glowRef.current
-      )
-        return;
+  useEffect(() => {
+    if (!enabled) return;
+    const startedAt = performance.now();
+    const unsubscribe = frameCoordinator.subscribe((time) => {
+      if (!pointLightRef.current || !glowRef.current) return;
+      const pulse = (Math.sin((time - startedAt) / 3000) + 1) / 2;
+      pointLightRef.current.intensity = 2 + pulse * 8;
+      const glowMaterial = glowRef.current.material as THREE.ShaderMaterial;
+      glowMaterial.uniforms.opacity.value = 0.2 + pulse * 0.3;
+      glowRef.current.scale.setScalar(1 + pulse * 0.2);
+    }, owner);
 
-      gsap.to(pointLightRef.current, {
-        intensity: 10,
-        duration: 3,
-        ease: "sine.inOut",
-        repeat: -1,
-        yoyo: true,
-      });
-
-      gsap.to(glowRef.current.material, {
-        opacity: 0.5,
-        duration: 3,
-        ease: "sine.inOut",
-        repeat: -1,
-        yoyo: true,
-      });
-
-      gsap.to(glowRef.current.scale, {
-        x: 1.2,
-        y: 1.2,
-        z: 1.2,
-        duration: 3,
-        ease: "sine.inOut",
-        repeat: -1,
-        yoyo: true,
-      });
-    },
-    { dependencies: [enabled] },
-  );
+    return unsubscribe;
+  }, [enabled, owner]);
 
   return { pointLightRef, sphereMeshRef, glowRef };
 }
