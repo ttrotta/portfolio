@@ -1,5 +1,6 @@
 import { Project, projects } from "../../../data/projectsData";
 import { useTransition } from "@/contexts/TransitionContext";
+import { useParams } from "next/navigation";
 import { ProjectPageDictionary, ProjectsDataDictionary } from "./ProjectPage";
 
 interface PaginationDotsProps {
@@ -14,6 +15,7 @@ export default function PaginationDots({
   projectsDataDict,
 }: PaginationDotsProps) {
   const { navigateWithTransition } = useTransition();
+  const { lang } = useParams<{ lang: string }>();
 
   const currentIndex = projects.findIndex((p) => p.id === currentId);
 
@@ -23,7 +25,7 @@ export default function PaginationDots({
     projects[currentIndex === projects.length - 1 ? 0 : currentIndex + 1];
 
   const handleNavigation = (slug: string, direction: "next" | "prev") => {
-    navigateWithTransition(`/projects/${slug}`, direction);
+    navigateWithTransition(`/${lang}/projects/${slug}`, direction);
   };
 
   return (

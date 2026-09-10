@@ -6,6 +6,7 @@ import { easing } from "maath";
 import type { Mesh } from "three";
 import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 
 type CardProps = ImageProps & {
   url: string;
@@ -22,6 +23,7 @@ export default function Card({
   const ref = useRef<Mesh>(null);
   const [hovered, hover] = useState(false);
   const router = useRouter();
+  const { lang } = useParams<{ lang: string }>();
 
   useFrame((_, delta) => {
     if (ref.current) {
@@ -57,7 +59,7 @@ export default function Card({
 
   const handleClick = (e: ThreeEvent<MouseEvent>) => {
     e.stopPropagation();
-    router.push(`/projects/${slug}`);
+    router.push(`/${lang}/projects/${slug}`);
   };
 
   return (

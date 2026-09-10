@@ -50,6 +50,9 @@ export default function Navbar({
   const bottomLineRef = useRef<HTMLSpanElement>(null);
   const linkRefs = useRef<(HTMLAnchorElement | HTMLButtonElement | null)[]>([]);
   const counterRef = useRef<HTMLSpanElement>(null);
+  const localizedPath = (targetLang: string) =>
+    pathname?.replace(/^\/(en|es)(?=\/|$)/, `/${targetLang}`) ||
+    `/${targetLang}`;
 
   useGSAP(() => {
     const tl = gsap.timeline({ paused: true });
@@ -210,7 +213,7 @@ export default function Navbar({
         <div className="relative z-110 flex items-center gap-6 md:gap-8">
           <div className="font-michroma group flex items-center gap-1.5 text-[0.65rem] tracking-[0.2em] text-neutral-400 uppercase transition-colors duration-300 hover:text-white">
             <Link
-              href={pathname ? pathname.replace(`/${lang}`, "/en") : "/en"}
+              href={localizedPath("en")}
               className={
                 lang === "en"
                   ? "text-white"
@@ -221,7 +224,7 @@ export default function Navbar({
             </Link>
             <span className="text-neutral-600">/</span>
             <Link
-              href={pathname ? pathname.replace(`/${lang}`, "/es") : "/es"}
+              href={localizedPath("es")}
               className={
                 lang === "es"
                   ? "text-white"
