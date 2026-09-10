@@ -1,5 +1,13 @@
 import { useEffect, useState } from "react";
 
+/**
+ * Feature toggle resolved at build time from the LIGHTBULB env var.
+ * Only the literal value "false" (case-insensitive) disables the lightbulb,
+ * so a missing variable defaults to enabled.
+ */
+export const isLightbulbEnabled =
+  process.env.LIGHTBULB?.trim().toLowerCase() !== "false";
+
 export type RuntimeQuality = {
   tier: "high" | "medium" | "constrained";
   dpr: [number, number];
@@ -70,7 +78,7 @@ export function getRuntimeQuality(
       particles: mobile ? 500 : 800,
       antialias: false,
       preloadBulb: false,
-      renderBulb: capabilities.webgl,
+      renderBulb: capabilities.webgl && isLightbulbEnabled,
     };
   }
 
@@ -80,8 +88,8 @@ export function getRuntimeQuality(
       dpr: [1, Math.min(capabilities.dpr, 1.5)],
       particles: 900,
       antialias: false,
-      preloadBulb: true,
-      renderBulb: true,
+      preloadBulb: isLightbulbEnabled,
+      renderBulb: isLightbulbEnabled,
     };
   }
 
@@ -90,8 +98,8 @@ export function getRuntimeQuality(
     dpr: [1, Math.min(capabilities.dpr, 2)],
     particles: 1500,
     antialias: true,
-    preloadBulb: true,
-    renderBulb: true,
+    preloadBulb: isLightbulbEnabled,
+    renderBulb: isLightbulbEnabled,
   };
 }
 
