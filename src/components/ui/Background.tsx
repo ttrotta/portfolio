@@ -4,24 +4,22 @@ import { Canvas } from "@react-three/fiber";
 import { Environment } from "@react-three/drei";
 import Lightbulb from "../lights/Lightbulb";
 import { Particles } from "../particles/Particles";
-import { useState, useEffect } from "react";
+import { useRuntimeQuality } from "@/lib/performance/quality";
+import { usePathname } from "next/navigation";
+import { useSceneLifecycle } from "@/lib/performance/frameCoordinator";
 
 export default function Background() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const quality = useRuntimeQuality();
+  const owner = usePathname();
+  const { elementRef, visible } = useSceneLifecycle(owner);
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-0">
+    <div ref={elementRef} className="pointer-events-none fixed inset-0 z-0">
       <Canvas
-        dpr={[1, 2]}
+        frameloop={visible ? "always" : "never"}
+        dpr={quality.dpr}
         gl={{
-          antialias: true,
+          antialias: quality.antialias,
           alpha: true, // transparent
         }}
         camera={{ position: [0, 0, 8], fov: 50 }}
@@ -29,8 +27,8 @@ export default function Background() {
         <ambientLight intensity={0.1} />
         <directionalLight position={[5, 5, 5]} intensity={0.4} />
         <Environment preset="night" />
-        <Particles />
-        {!isMobile && <Lightbulb />}
+        <Particles count={quality.particles} />
+        {quality.renderBulb && <Lightbulb />}
       </Canvas>
     </div>
   );

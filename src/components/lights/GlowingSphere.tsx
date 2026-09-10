@@ -26,6 +26,11 @@ export function GlowingSphere({
 }: GlowingSphereProps) {
   const meshRef = useRef<Mesh>(null);
 
+  const setMeshRef = (mesh: Mesh | null) => {
+    meshRef.current = mesh;
+    if (glowRef) glowRef.current = mesh;
+  };
+
   const shaderMaterial = useMemo(() => {
     return new ShaderMaterial({
       uniforms: {
@@ -47,11 +52,7 @@ export function GlowingSphere({
   });
 
   return (
-    <mesh
-      ref={glowRef || meshRef}
-      position={position}
-      material={shaderMaterial}
-    >
+    <mesh ref={setMeshRef} position={position} material={shaderMaterial}>
       <sphereGeometry args={[radius, 32, 32]} />
     </mesh>
   );

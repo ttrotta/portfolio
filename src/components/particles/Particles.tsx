@@ -1,13 +1,13 @@
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { ShaderMaterial, AdditiveBlending } from "three";
+import { ShaderMaterial, AdditiveBlending, Vector2 } from "three";
 import { useParticleData } from "@/hooks/useParticleData";
 import { ParticleMaterialConfig } from "./material";
-import { Vector2 } from "three";
 
-export const Particles = () => {
-  const particleData = useParticleData(1500, 100, 100, 250);
+export const Particles = ({ count = 1500 }: { count?: number }) => {
+  const particleData = useParticleData(count, 100, 100, 250);
   const materialRef = useRef<ShaderMaterial>(null!);
+  const mouse = useRef(new Vector2()).current;
   const scaleValue = 55;
 
   useFrame((state) => {
@@ -17,10 +17,8 @@ export const Particles = () => {
       const mouseX = state.pointer.x * scaleValue;
       const mouseY = state.pointer.y * scaleValue;
 
-      materialRef.current.uniforms.uMouse.value.lerp(
-        new Vector2(mouseX, mouseY),
-        0.1,
-      );
+      mouse.set(mouseX, mouseY);
+      materialRef.current.uniforms.uMouse.value.lerp(mouse, 0.1);
     }
   });
 

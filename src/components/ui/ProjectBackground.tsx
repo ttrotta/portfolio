@@ -2,19 +2,30 @@
 
 import { Canvas } from "@react-three/fiber";
 import { Particles } from "../particles/Particles";
+import { useRuntimeQuality } from "@/lib/performance/quality";
+import { usePathname } from "next/navigation";
+import { useSceneLifecycle } from "@/lib/performance/frameCoordinator";
 
 export default function ProjectBackground() {
+  const quality = useRuntimeQuality();
+  const owner = usePathname();
+  const { elementRef, visible } = useSceneLifecycle(owner);
+
   return (
-    <div className="pointer-events-none fixed inset-0 z-0 h-full w-full">
+    <div
+      ref={elementRef}
+      className="pointer-events-none fixed inset-0 z-0 h-full w-full"
+    >
       <Canvas
-        dpr={[1, 2]}
+        frameloop={visible ? "always" : "never"}
+        dpr={quality.dpr}
         gl={{
-          antialias: true,
+          antialias: quality.antialias,
           alpha: true, // transparent
         }}
         camera={{ position: [0, 0, 8], fov: 50 }}
       >
-        <Particles />
+        <Particles count={quality.particles} />
       </Canvas>
     </div>
   );
