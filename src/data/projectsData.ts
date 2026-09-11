@@ -71,7 +71,7 @@ export const projects: Project[] = [
       "GEMINI AI",
       "NEXTAUTH",
     ],
-    repoUrl: "https://github.com/ttrotta/sky-reach",
+    repoUrl: "https://github.com/ttrotta/sky-reach-ecom",
     liveUrl: "https://sky-reach.vercel.app/",
   },
   {
