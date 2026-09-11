@@ -64,6 +64,10 @@
     "new-project-2": {
       "title": "Proyecto en Desarrollo",
       "description": "Este es un próximo proyecto en el que estoy explorando nuevas tecnologías y patrones de implementación. Actualmente está en desarrollo sin una versión pública todavía, enfocándose en solidificar las bases antes de la primera versión."
+    },
+    "aguja": {
+      "title": "Aguja",
+      "description": "Aguja es un depurador para la recuperación en sistemas RAG. Pega un documento para inspeccionar su fragmentación y la puntuación de cada fragmento ordenado, y usa cuatro herramientas —inspector de fragmentos, comparación de estrategias, sensibilidad a consultas y fragmentos confundibles— para entender los fallos de recuperación. Ejecuta embeddings con Transformers.js en el navegador usando Xenova/all-MiniLM-L6-v2, sin necesidad de una clave de API y manteniendo el documento en el dispositivo. La interfaz es bilingüe, pero el análisis se mantiene en inglés."
     }
   },
   "techStack": {

@@ -64,6 +64,10 @@
     "new-project-2": {
       "title": "Project in Development",
       "description": "This is an upcoming project where I am exploring new technologies and implementation patterns. It is currently in the works without a public-facing version yet, focusing on solidifying the foundation before the first release."
+    },
+    "aguja": {
+      "title": "Aguja",
+      "description": "Aguja is a debugger for RAG retrieval. Paste a document to inspect chunking and every ranked chunk score, then use four tools—chunk inspector, strategy comparison, query sensitivity, and confusable chunks—to understand retrieval misses. It runs Transformers.js embeddings in the browser with Xenova/all-MiniLM-L6-v2, so no API key is required and documents stay on the device. The bilingual interface keeps analysis in English."
     }
   },
   "techStack": {

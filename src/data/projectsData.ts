@@ -10,6 +10,27 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
+    slug: "aguja",
+    images: [
+      "/projects/aguja-placeholder.png",
+      "/projects/ar1.png",
+      "/projects/ar2.png",
+    ],
+    stack: [
+      "NEXT.JS",
+      "TYPESCRIPT",
+      "TAILWIND",
+      "PNPM",
+      "TRANSFORMERS.JS",
+      "NEXT-INTL",
+      "VITEST",
+      "PLAYWRIGHT",
+    ],
+    repoUrl: "https://github.com/ttrotta/aguja",
+    liveUrl: "https://aguja.vercel.app",
+  },
+  {
+    id: 2,
     slug: "study-sessions",
     images: [
       "/projects/studysessions.avif",
@@ -31,7 +52,7 @@ export const projects: Project[] = [
     liveUrl: "https://studysessions.onrender.com/",
   },
   {
-    id: 2,
+    id: 3,
     slug: "sky-reach",
     images: [
       "/projects/skyreach.avif",
@@ -54,7 +75,7 @@ export const projects: Project[] = [
     liveUrl: "https://sky-reach.vercel.app/",
   },
   {
-    id: 3,
+    id: 4,
     slug: "new-project",
     images: ["/projects/newproject.avif", "/projects/np1.avif"],
     stack: ["React", "Node.js", "Tailwind"],
