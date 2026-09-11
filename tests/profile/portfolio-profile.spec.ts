@@ -44,7 +44,7 @@ type ProfileMetrics = {
   diagnostics: string[];
 };
 
-const projects = ["study-sessions", "sky-reach", "new-project"];
+const projects = ["aguja", "study-sessions", "sky-reach", "new-project"];
 
 async function gotoRoute(page: Page, route: string) {
   let lastError: unknown;
