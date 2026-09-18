@@ -13,8 +13,10 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
   const lenisRef = useRef<LenisRef>(null);
 
   useEffect(() => {
+    // frameCoordinator passes raw rAF timestamp in ms (see Context7 lenis/react custom raf loop).
+    // Do NOT multiply by 1000 here: that conversion is only for gsap.ticker (seconds -> ms).
     const unsubscribe = frameCoordinator.subscribe((time) => {
-      lenisRef.current?.lenis?.raf(time * 1000);
+      lenisRef.current?.lenis?.raf(time);
     });
 
     return () => {
